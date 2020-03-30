@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -O2 -g -DNDEBUG  -shared -Wl,-soname,libfluid-native.so -o libfluid-native.so CMakeFiles/fluid-native.dir/src/main/cpp/jni/fluid-native.c.o -lfluidsynth -landroid -llog 

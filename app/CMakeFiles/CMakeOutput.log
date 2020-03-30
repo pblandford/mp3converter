@@ -1,0 +1,605 @@
+The system is: Linux - 5.0.0-32-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/3.10.2/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5c54e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5c54e.dir/build.make CMakeFiles/cmTC_5c54e.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5c54e.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_5c54e.dir/testCCompiler.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_5c54e
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c54e.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_5c54e.dir/testCCompiler.c.o  -o cmTC_5c54e 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_27e71/fast"
+/usr/bin/make -f CMakeFiles/cmTC_27e71.dir/build.make CMakeFiles/cmTC_27e71.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o   -c /home/philb/Android/Sdk/cmake/3.10.2.4988404/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_27e71
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27e71.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o  -o cmTC_27e71 
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_27e71' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc45yZUz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_27e71 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_27e71' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_27e71/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_27e71.dir/build.make CMakeFiles/cmTC_27e71.dir/build]
+  ignore line: [make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o   -c /home/philb/Android/Sdk/cmake/3.10.2.4988404/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_27e71]
+  ignore line: [/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27e71.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o  -o cmTC_27e71 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
+  ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+  ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.5.0-3ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_27e71' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc45yZUz.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_27e71 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc45yZUz.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_27e71] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
+    arg [CMakeFiles/cmTC_27e71.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7] ==> [/usr/lib/gcc/x86_64-linux-gnu/7]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/7;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1293c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1293c.dir/build.make CMakeFiles/cmTC_1293c.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1293c.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_1293c.dir/feature_tests.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/feature_tests.c
+Linking C executable cmTC_1293c
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1293c.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_1293c.dir/feature_tests.c.o  -o cmTC_1293c 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_47d07/fast"
+/usr/bin/make -f CMakeFiles/cmTC_47d07.dir/build.make CMakeFiles/cmTC_47d07.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_47d07.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_47d07.dir/feature_tests.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/feature_tests.c
+Linking C executable cmTC_47d07
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_47d07.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_47d07.dir/feature_tests.c.o  -o cmTC_47d07 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6a5df/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6a5df.dir/build.make CMakeFiles/cmTC_6a5df.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6a5df.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_6a5df.dir/feature_tests.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/feature_tests.c
+Linking C executable cmTC_6a5df
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a5df.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_6a5df.dir/feature_tests.c.o  -o cmTC_6a5df 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ce0ef/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ce0ef.dir/build.make CMakeFiles/cmTC_ce0ef.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ce0ef.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_ce0ef.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ce0ef
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce0ef.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ce0ef.dir/CheckIncludeFile.c.o  -o cmTC_ce0ef 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b413f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b413f.dir/build.make CMakeFiles/cmTC_b413f.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b413f.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_b413f.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b413f
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b413f.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_b413f.dir/CheckIncludeFile.c.o  -o cmTC_b413f 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d778f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d778f.dir/build.make CMakeFiles/cmTC_d778f.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d778f.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_d778f.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d778f
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d778f.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_d778f.dir/CheckIncludeFile.c.o  -o cmTC_d778f 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file math.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9d0b2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9d0b2.dir/build.make CMakeFiles/cmTC_9d0b2.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d0b2.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_9d0b2.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9d0b2
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d0b2.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_9d0b2.dir/CheckIncludeFile.c.o  -o cmTC_9d0b2 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file errno.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0f006/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0f006.dir/build.make CMakeFiles/cmTC_0f006.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0f006.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_0f006.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_0f006
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f006.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_0f006.dir/CheckIncludeFile.c.o  -o cmTC_0f006 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4242b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4242b.dir/build.make CMakeFiles/cmTC_4242b.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4242b.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_4242b.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4242b
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4242b.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4242b.dir/CheckIncludeFile.c.o  -o cmTC_4242b 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e96ec/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e96ec.dir/build.make CMakeFiles/cmTC_e96ec.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e96ec.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_e96ec.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e96ec
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e96ec.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_e96ec.dir/CheckIncludeFile.c.o  -o cmTC_e96ec 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/mman.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3bb08/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3bb08.dir/build.make CMakeFiles/cmTC_3bb08.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3bb08.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_3bb08.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_3bb08
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3bb08.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_3bb08.dir/CheckIncludeFile.c.o  -o cmTC_3bb08 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_33562/fast"
+/usr/bin/make -f CMakeFiles/cmTC_33562.dir/build.make CMakeFiles/cmTC_33562.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_33562.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_33562.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_33562
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33562.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_33562.dir/CheckIncludeFile.c.o  -o cmTC_33562 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fa97f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fa97f.dir/build.make CMakeFiles/cmTC_fa97f.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fa97f.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_fa97f.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_fa97f
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fa97f.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_fa97f.dir/CheckIncludeFile.c.o  -o cmTC_fa97f 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_04f47/fast"
+/usr/bin/make -f CMakeFiles/cmTC_04f47.dir/build.make CMakeFiles/cmTC_04f47.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_04f47.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_04f47.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_04f47
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04f47.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_04f47.dir/CheckIncludeFile.c.o  -o cmTC_04f47 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file fcntl.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_84b38/fast"
+/usr/bin/make -f CMakeFiles/cmTC_84b38.dir/build.make CMakeFiles/cmTC_84b38.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_84b38.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_84b38.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_84b38
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84b38.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_84b38.dir/CheckIncludeFile.c.o  -o cmTC_84b38 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/socket.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_dd4e0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_dd4e0.dir/build.make CMakeFiles/cmTC_dd4e0.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dd4e0.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_dd4e0.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_dd4e0
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dd4e0.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_dd4e0.dir/CheckIncludeFile.c.o  -o cmTC_dd4e0 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file netinet/in.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c36f1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c36f1.dir/build.make CMakeFiles/cmTC_c36f1.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c36f1.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_c36f1.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c36f1
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c36f1.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c36f1.dir/CheckIncludeFile.c.o  -o cmTC_c36f1 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file netinet/tcp.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4f572/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4f572.dir/build.make CMakeFiles/cmTC_4f572.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4f572.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_4f572.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4f572
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4f572.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4f572.dir/CheckIncludeFile.c.o  -o cmTC_4f572 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file arpa/inet.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b14bd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b14bd.dir/build.make CMakeFiles/cmTC_b14bd.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b14bd.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_b14bd.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b14bd
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b14bd.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_b14bd.dir/CheckIncludeFile.c.o  -o cmTC_b14bd 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file limits.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_32fb6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_32fb6.dir/build.make CMakeFiles/cmTC_32fb6.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_32fb6.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_32fb6.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_32fb6
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32fb6.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_32fb6.dir/CheckIncludeFile.c.o  -o cmTC_32fb6 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_63273/fast"
+/usr/bin/make -f CMakeFiles/cmTC_63273.dir/build.make CMakeFiles/cmTC_63273.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_63273.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_63273.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_63273
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63273.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_63273.dir/CheckIncludeFile.c.o  -o cmTC_63273 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file signal.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0f418/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0f418.dir/build.make CMakeFiles/cmTC_0f418.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0f418.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_0f418.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_0f418
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f418.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_0f418.dir/CheckIncludeFile.c.o  -o cmTC_0f418 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file getopt.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ecef2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ecef2.dir/build.make CMakeFiles/cmTC_ecef2.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ecef2.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_ecef2.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ecef2
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ecef2.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ecef2.dir/CheckIncludeFile.c.o  -o cmTC_ecef2 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7551b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7551b.dir/build.make CMakeFiles/cmTC_7551b.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7551b.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_7551b.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_7551b
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7551b.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_7551b.dir/CheckIncludeFile.c.o  -o cmTC_7551b 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3401b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3401b.dir/build.make CMakeFiles/cmTC_3401b.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3401b.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_3401b.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_3401b
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3401b.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_3401b.dir/CheckIncludeFile.c.o  -o cmTC_3401b 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee6ef/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ee6ef.dir/build.make CMakeFiles/cmTC_ee6ef.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee6ef.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_ee6ef.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_ee6ef
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee6ef.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ee6ef.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_ee6ef 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2eacd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2eacd.dir/build.make CMakeFiles/cmTC_2eacd.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2eacd.dir/TestEndianess.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_2eacd.dir/TestEndianess.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_2eacd
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2eacd.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_2eacd.dir/TestEndianess.c.o  -o cmTC_2eacd 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6da9c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6da9c.dir/build.make CMakeFiles/cmTC_6da9c.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6da9c.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -Wall -W -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wno-unused-parameter -Wdeclaration-after-statement -Werror=implicit-function-declaration -Wbad-function-cast -Wcast-align  -fPIE   -o CMakeFiles/cmTC_6da9c.dir/CheckIncludeFile.c.o   -c /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6da9c
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6da9c.dir/link.txt --verbose=1
+/usr/bin/cc  -Wall -W -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wno-unused-parameter -Wdeclaration-after-statement -Werror=implicit-function-declaration -Wbad-function-cast -Wcast-align     -rdynamic CMakeFiles/cmTC_6da9c.dir/CheckIncludeFile.c.o  -o cmTC_6da9c 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f463e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f463e.dir/build.make CMakeFiles/cmTC_f463e.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f463e.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -W -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wno-unused-parameter -Wdeclaration-after-statement -Werror=implicit-function-declaration -Wbad-function-cast -Wcast-align -DCHECK_FUNCTION_EXISTS=pthread_create -fPIE   -o CMakeFiles/cmTC_f463e.dir/CheckFunctionExists.c.o   -c /home/philb/Android/Sdk/cmake/3.10.2.4988404/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f463e
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f463e.dir/link.txt --verbose=1
+/usr/bin/cc  -Wall -W -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wno-unused-parameter -Wdeclaration-after-statement -Werror=implicit-function-declaration -Wbad-function-cast -Wcast-align -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_f463e.dir/CheckFunctionExists.c.o  -o cmTC_f463e -lpthread 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
+Determining if the function inet_ntop exists passed with the following output:
+Change Dir: /home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f48e0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f48e0.dir/build.make CMakeFiles/cmTC_f48e0.dir/build
+make[1]: Entering directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f48e0.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall -W -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wno-unused-parameter -Wdeclaration-after-statement -Werror=implicit-function-declaration -Wbad-function-cast -Wcast-align -DCHECK_FUNCTION_EXISTS=inet_ntop -fPIE   -o CMakeFiles/cmTC_f48e0.dir/CheckFunctionExists.c.o   -c /home/philb/Android/Sdk/cmake/3.10.2.4988404/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f48e0
+/home/philb/Android/Sdk/cmake/3.10.2.4988404/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f48e0.dir/link.txt --verbose=1
+/usr/bin/cc  -Wall -W -Wpointer-arith -Wcast-qual -Wstrict-prototypes -Wno-unused-parameter -Wdeclaration-after-statement -Werror=implicit-function-declaration -Wbad-function-cast -Wcast-align -DCHECK_FUNCTION_EXISTS=inet_ntop    -rdynamic CMakeFiles/cmTC_f48e0.dir/CheckFunctionExists.c.o  -o cmTC_f48e0 
+make[1]: Leaving directory '/home/philb/AndroidStudioProjects/Mp3Converter/app/CMakeFiles/CMakeTmp'
+
+
