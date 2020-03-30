@@ -51,7 +51,7 @@ class FilePickerFragment() : Fragment() {
   }
 
   private fun navigateToConvertOptions(file:MidiFileDescr) {
-    val action = FilePickerFragmentDirections.actionFilePickerFragmentToConvertOptionsFragment(file)
+    val action = FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(file)
     findNavController().navigate(action)
   }
 

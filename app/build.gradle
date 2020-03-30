@@ -11,7 +11,8 @@ android {
         applicationId "com.philblandford.mp3converter"
         minSdkVersion 29
         targetSdkVersion 29
-        versionCode 1
+
+        versionCode 3
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -87,6 +88,7 @@ dependencies {
     implementation "org.koin:koin-androidx-fragment:$koin_version"
     implementation "org.koin:koin-androidx-ext:$koin_version"
     implementation 'com.google.android.gms:play-services-ads:19.0.1'
+    implementation 'com.github.jeancsanchez:JcPlayer:2.6.16'
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

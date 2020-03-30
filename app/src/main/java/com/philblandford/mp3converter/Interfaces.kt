@@ -17,10 +17,7 @@ enum class DestinationType {
 }
 
 @Parcelize
-data class ConvertOptions(
-  val exportType: ExportType, val destinationType: DestinationType,
-  val midiFile: MidiFileDescr
-) : Parcelable
+data class ConvertOptions(val exportType: ExportType, val midiFile: MidiFileDescr) : Parcelable
 
 @Parcelize
 data class MidiFileDescr(val id: Long, val name: String, val uri: Uri) : Parcelable

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/convert_options_fragment"
+    android:id="@+id/convert_graph">
+
+    <fragment
+        android:id="@+id/convert_options_fragment"
+        android:name="com.philblandford.mp3converter.ui.conversion.ConvertOptionsFragment"
+        android:label="fragment_convert_options"
+        tools:layout="@layout/fragment_convert_options" >
+        <argument
+            android:name="midiFile"
+            app:argType="com.philblandford.mp3converter.MidiFileDescr" />
+        <action
+            android:id="@+id/action_convertOptionsFragment_to_progressFragment"
+            app:destination="@id/progressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.philblandford.mp3converter.ui.conversion.ProgressFragment"
+        android:label="fragment_progress"
+        tools:layout="@layout/fragment_progress" >
+        <action
+            android:id="@+id/action_progressFragment_to_blankFragment"
+            app:destination="@id/successFragment" />
+        <action
+            android:id="@+id/action_progressFragment_to_file_picker_fragment"
+            app:destination="@id/file_picker_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.philblandford.mp3converter.ui.conversion.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success">
+        <action
+            android:id="@+id/action_successFragment_to_file_picker_fragment"
+            app:destination="@id/file_picker_fragment" />
+    </fragment>
+
+</navigation>

@@ -12,46 +12,17 @@
         tools:layout="@layout/activity_file_picker"
         >
         <action
-            android:id="@+id/action_file_picker_fragment_to_convertOptionsFragment"
-            app:destination="@id/convertOptionsFragment" />
+            android:id="@+id/action_file_picker_fragment_to_convertDialogFragment"
+            app:destination="@id/convertDialogFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/convertOptionsFragment"
-        android:name="com.philblandford.mp3converter.ui.options.ConvertOptionsFragment"
-        android:label="fragment_convert_options"
-        tools:layout="@layout/fragment_convert_options" >
+    <dialog
+        android:id="@+id/convertDialogFragment"
+        android:name="com.philblandford.mp3converter.ui.conversion.ConvertDialogFragment"
+        android:label="fragment_convert_dialog"
+        tools:layout="@layout/fragment_convert_dialog" >
         <argument
             android:name="midiFile"
             app:argType="com.philblandford.mp3converter.MidiFileDescr" />
-        <action
-            android:id="@+id/action_convertOptionsFragment_to_progressFragment"
-            app:destination="@id/progressFragment" />
-    </fragment>
-    <dialog
-        android:id="@+id/progressFragment"
-        android:name="com.philblandford.mp3converter.ui.progress.ProgressFragment"
-        android:label="fragment_progress"
-        tools:layout="@layout/fragment_progress" >
-        <argument
-            android:name="convertOptions"
-            app:argType="com.philblandford.mp3converter.ConvertOptions" />
-        <action
-            android:id="@+id/action_progressFragment_to_blankFragment"
-            app:destination="@id/successFragment" />
-        <action
-            android:id="@+id/action_progressFragment_to_file_picker_fragment"
-            app:destination="@id/file_picker_fragment" />
     </dialog>
-    <dialog
-        android:id="@+id/successFragment"
-        android:name="com.philblandford.mp3converter.SuccessFragment"
-        android:label="fragment_success"
-        tools:layout="@layout/fragment_success">
-        <argument
-            android:name="path"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_successFragment_to_file_picker_fragment"
-            app:destination="@id/file_picker_fragment" />
-    </dialog>
+
 </navigation>

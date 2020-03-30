@@ -20,7 +20,7 @@ class MediaFileGetter(private val contentResolver: ContentResolver) : FileGetter
   override fun getMidiFiles(): List<MidiFileDescr> {
     val downloads = doQuery(MediaStore.Downloads.EXTERNAL_CONTENT_URI)
     val media = doQuery(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
-    return (downloads + media).sortedBy { it.name }
+    return (media).sortedBy { it.name }
   }
 
   private fun doQuery(uri: Uri): List<MidiFileDescr> {
