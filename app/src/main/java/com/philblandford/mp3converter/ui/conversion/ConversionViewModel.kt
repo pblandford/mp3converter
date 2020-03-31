@@ -18,6 +18,7 @@ class ConversionViewModel : ViewModel(), KoinComponent {
   var midiFileDescr:MidiFileDescr? = null
   var path: String? = null
   var uri:Uri? = null
+  var failMessage:String? = null
   var exportType:ExportType = ExportType.MP3
 
   fun convertFile(

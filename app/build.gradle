@@ -12,8 +12,8 @@ android {
         minSdkVersion 29
         targetSdkVersion 29
 
-        versionCode 3
-        versionName "1.0"
+        versionCode 5
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -89,6 +89,7 @@ dependencies {
     implementation "org.koin:koin-androidx-ext:$koin_version"
     implementation 'com.google.android.gms:play-services-ads:19.0.1'
     implementation 'com.github.jeancsanchez:JcPlayer:2.6.16'
+    implementation 'com.devbrackets.android:exomedia:4.3.0'
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

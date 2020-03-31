@@ -24,36 +24,25 @@ class ProgressFragment : Fragment() {
 
   override fun onResume() {
     super.onResume()
-    viewModel.convertFile(
-      { binding.progressBar.setProgress(it, false) }, ::complete
-    ) {
-      activity?.runOnUiThread {
-        Toast.makeText(
-          context,
-          getString(
-            R.string.convert_failed,
-            viewModel.midiFileDescr?.name ?: "",
-            it.message
-          ),
-          Toast.LENGTH_LONG
-        ).show()
+    try {
+      viewModel.convertFile(
+        { binding.progressBar.setProgress(it, false) }, ::showSuccess
+      ) {
+        showFailure(it.message ?: getString(R.string.failure_unknown))
       }
+    } catch (e:Exception) {
+      showFailure(e.message!!)
     }
   }
 
-  private fun complete() {
-    showSuccess()
-  }
-
   private fun showSuccess() {
-    val path = viewModel.path ?: "Unknown"
     val action = ProgressFragmentDirections.actionProgressFragmentToBlankFragment()
     findNavController().navigate(action)
   }
 
-
-  private fun backToMain() {
-    val action = ProgressFragmentDirections.actionProgressFragmentToFilePickerFragment()
+  private fun showFailure(reason: String) {
+    viewModel.failMessage = reason
+    val action = ProgressFragmentDirections.actionProgressFragmentToFailureFragment()
     findNavController().navigate(action)
   }
 

@@ -18,18 +18,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.jean.jcplayer.view.JcPlayerView
-        android:id="@+id/player_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+    <com.devbrackets.android.exomedia.ui.widget.VideoView
+        android:id="@+id/video_view"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_share"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_success" >
-
-    </com.example.jean.jcplayer.view.JcPlayerView>
+        app:layout_constraintTop_toBottomOf="@+id/text_success"
+        app:useDefaultControls="true" />
 
     <ImageView
         android:id="@+id/button_share"
@@ -40,7 +40,6 @@
         android:layout_weight="1"
         android:src="@android:drawable/ic_menu_share"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player_view" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

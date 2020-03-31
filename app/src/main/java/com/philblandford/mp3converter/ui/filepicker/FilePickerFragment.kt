@@ -28,8 +28,16 @@ class FilePickerFragment() : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     binding = FilePickerBinding.inflate(inflater)
+    initSwiper()
     initRecyclerView()
     return binding.root
+  }
+
+  private fun initSwiper() {
+    binding.fileListSwiper.setOnRefreshListener {
+      initRecyclerView()
+      binding.fileListSwiper.isRefreshing = false
+    }
   }
 
   private fun initRecyclerView() {
@@ -50,8 +58,9 @@ class FilePickerFragment() : Fragment() {
     }
   }
 
-  private fun navigateToConvertOptions(file:MidiFileDescr) {
-    val action = FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(file)
+  private fun navigateToConvertOptions(file: MidiFileDescr) {
+    val action =
+      FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(file)
     findNavController().navigate(action)
   }
 

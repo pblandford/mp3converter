@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     checkPermissions()
   }
 
-
   private fun initScreen() {
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)

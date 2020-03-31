@@ -14,7 +14,7 @@ class FilePickerViewModel : ViewModel(), KoinComponent {
 
 
   fun getFileNames():List<MidiFileDescr> {
-    return fileGetter.getMidiFiles()
+    return fileGetter.getMidiFiles().sortedBy { it.name.toLowerCase() }
   }
 
 

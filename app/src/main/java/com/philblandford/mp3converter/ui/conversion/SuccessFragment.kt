@@ -37,7 +37,6 @@ class SuccessFragment : Fragment() {
 
   override fun onStop() {
     super.onStop()
-    binding.playerView.kill()
   }
 
   private fun backToMain() {
@@ -55,7 +54,7 @@ class SuccessFragment : Fragment() {
     viewModel.uri?.let { uri ->
       val shareIntent: Intent = Intent().apply {
         action = Intent.ACTION_SEND
-        putExtra(Intent.EXTRA_STREAM, viewModel.uri)
+        putExtra(Intent.EXTRA_STREAM, uri)
         type = mime
       }
       startActivity(Intent.createChooser(shareIntent, resources.getText(R.string.send_to)))
@@ -63,15 +62,9 @@ class SuccessFragment : Fragment() {
     }
   }
 
-
   private fun initPlayer() {
     viewModel.uri?.let { uri ->
-      activity?.contentResolver?.openInputStream(uri)?.let { inputStream ->
-        val tmpFile = File(requireContext().cacheDir, FilenameUtils.getBaseName(viewModel.path))
-        FileUtils.copyInputStreamToFile(inputStream, tmpFile)
-        val audio = JcAudio.createFromFilePath(tmpFile.absolutePath)
-        binding.playerView.addAudio(audio)
-      }
+      binding.videoView.setVideoURI(uri)
     }
   }
 }
