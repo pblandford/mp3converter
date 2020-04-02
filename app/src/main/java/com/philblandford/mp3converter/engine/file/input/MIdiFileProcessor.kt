@@ -116,34 +116,12 @@ internal fun processEventList(
     getTrackEventsWithOffsets(track.events)
   }.sortedBy { it.first }
 
-//  youBellend(allEvents)
-
-  var eventSets = allEvents.groupBy { it.first }.map { (offset, events) ->
+  val eventSets = allEvents.groupBy { it.first }.map { (offset, events) ->
     offset to EventSet(0, events.map { it.second })
   }.sortedBy { it.first }
 
   return eventSets.setDurations(ppqn, getTempo)
 
-}
-
-private fun youBellend(pairs:PairListL<MidiEvent>) {
-  val grouped = pairs.groupBy { it.second.channel }
-  val out = File(Environment.getExternalStorageDirectory(), "dump-mid")
-  val os = FileOutputStream(out)
-  pairs.forEach {
-    os.write("${it}\n".toByteArray())
-  }
-  os.close()
-}
-
-
-private fun youTwat(pairs:List<EventSet>) {
-  val out = File(Environment.getExternalStorageDirectory(), "dump-ev")
-  val os = FileOutputStream(out)
-  pairs.forEach {
-    os.write("${it}\n".toByteArray())
-  }
-  os.close()
 }
 
 internal fun getTrackEventsWithOffsets(

@@ -941,7 +941,6 @@ format_bitstream(lame_internal_flags * gfc)
         ERRORF(gfc, "Internal buffer inconsistency. flushbits <> ResvSize");
     }
 
-
     /* compare main_data_begin for the next frame with what we
      * think the resvsize is: */
     if ((l3_side->main_data_begin * 8) != esv->ResvSize) {

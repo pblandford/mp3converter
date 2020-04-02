@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.philblandford.mp3converter.MidiFileDescr
@@ -44,7 +45,11 @@ class FilePickerFragment() : Fragment() {
     val names = viewModel.getFileNames()
     val adapter = FileAdapter(names)
     binding.fileList.adapter = adapter
-    binding.fileList.layoutManager = LinearLayoutManager(context)
+    val manager = LinearLayoutManager(context)
+    binding.fileList.layoutManager = manager
+
+    val dividerItemDecoration = DividerItemDecoration(context, manager.orientation)
+    binding.fileList.addItemDecoration(dividerItemDecoration)
   }
 
   private inner class FileViewHolder(view: View, getFile: (Int) -> MidiFileDescr?) :

@@ -35,8 +35,12 @@ class FileConverter(private val contentResolver: ContentResolver) : Converter, K
         val fis = FileInputStream(pfd.fileDescriptor)
         val bytes = IOUtils.toByteArray(fis)
         when (exportType) {
-          ExportType.MP3 -> convertMidiToMp3(bytes, sampler, encoder, updateProgress).collect { byteArray ->
-            outputStream.write(byteArray)
+          ExportType.MP3 -> {
+            encoder.start()
+            convertMidiToMp3(bytes, sampler, encoder, updateProgress).collect { byteArray ->
+              outputStream.write(byteArray)
+            }
+            encoder.finish()
           }
           ExportType.WAV -> convertMidiToWave(bytes, sampler, updateProgress).collect() { byteArray ->
             outputStream.write(byteArray)

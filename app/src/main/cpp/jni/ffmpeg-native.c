@@ -20,6 +20,16 @@ JNIEXPORT void JNICALL
     lame_init_params(gfp);
 }
 
+
+JNIEXPORT void JNICALL
+Java_com_philblandford_mp3converter_engine_encode_LameEncoderKt_close(JNIEnv
+                                                                     *env,
+                                                                     jobject thiz) {
+    if (gfp != NULL) {
+        lame_close(gfp);
+    }
+}
+
 JNIEXPORT jbyteArray JNICALL
 Java_com_philblandford_mp3converter_engine_encode_LameEncoderKt_encodeBytes(JNIEnv
                                                                        *env,

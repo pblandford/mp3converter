@@ -18,6 +18,7 @@ class ConvertDialogFragment : DialogFragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    viewModel.clear()
     viewModel.midiFileDescr = args.midiFile
   }
 

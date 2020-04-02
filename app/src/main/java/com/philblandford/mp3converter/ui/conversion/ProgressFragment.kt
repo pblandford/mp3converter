@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.philblandford.mp3converter.ExportType
@@ -24,15 +25,22 @@ class ProgressFragment : Fragment() {
 
   override fun onResume() {
     super.onResume()
-    try {
-      viewModel.convertFile(
-        { binding.progressBar.setProgress(it, false) }, ::showSuccess
-      ) {
-        showFailure(it.message ?: getString(R.string.failure_unknown))
+    bindToStatus()
+    viewModel.convertFile()
+  }
+
+  private fun bindToStatus() {
+    viewModel.getProgressData().observe(viewLifecycleOwner, Observer {
+      it.failure?.let {
+        showFailure()
+      } ?: run {
+        when (it.status) {
+          Status.COMPLETED -> showSuccess()
+          Status.IN_PROGRESS -> showProgress(it.progress)
+          else -> {}
+        }
       }
-    } catch (e:Exception) {
-      showFailure(e.message!!)
-    }
+    })
   }
 
   private fun showSuccess() {
@@ -40,10 +48,13 @@ class ProgressFragment : Fragment() {
     findNavController().navigate(action)
   }
 
-  private fun showFailure(reason: String) {
-    viewModel.failMessage = reason
+  private fun showFailure() {
     val action = ProgressFragmentDirections.actionProgressFragmentToFailureFragment()
     findNavController().navigate(action)
+  }
+
+  private fun showProgress(progress:Int) {
+    binding.progressBar.progress = progress
   }
 
   override fun onCreateView(

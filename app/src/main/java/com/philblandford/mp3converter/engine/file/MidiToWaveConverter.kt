@@ -27,7 +27,8 @@ fun convertMidiToMp3(
 ): Flow<ByteArray> {
   return when (val res = readMidiFile(midiData.toList())) {
     is Right -> {
-      writeMidiSamples(res.r, sampler, encoder, updateProgress)
+      val flow = writeMidiSamples(res.r, sampler, encoder, updateProgress)
+      flow
     }
     is Left -> throw(Exception("Read Midi failed at ${res.l.byte} with ${res.l.message}"))
   }

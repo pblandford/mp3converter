@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.jean.jcplayer.model.JcAudio
 import com.philblandford.mp3converter.ExportType
 import com.philblandford.mp3converter.R
 import com.philblandford.mp3converter.databinding.FragmentSuccessBinding
