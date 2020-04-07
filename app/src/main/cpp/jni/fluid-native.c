@@ -18,9 +18,9 @@ int64_t SAMPLE_RATE = (int64_t) 44100;
 
 JNIEXPORT void JNICALL
 Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_openFluid(JNIEnv
-                                                                    *env,
-                                                                    jobject thiz, jstring
-                                                                    soundfontPath) {
+                                                                           *env,
+                                                                           jobject thiz, jstring
+                                                                           soundfontPath) {
     const char *nativeString = (*env)->GetStringUTFChars(env, soundfontPath, NULL);
 
     __android_log_print(ANDROID_LOG_DEBUG,
@@ -37,35 +37,27 @@ Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_openFluid(JNIEn
 
 JNIEXPORT jshortArray
 Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_getSampleData(JNIEnv
-                                                                        *env,
-                                                                        jclass thiz,
-                                                                        jlong numShorts) {
+                                                                               *env,
+                                                                               jclass thiz,
+                                                                               jlong numShorts) {
 
-    short *result = (short *) malloc(numShorts * 2);
-//    __android_log_print(ANDROID_LOG_DEBUG,
-//                        "FLD", "getting buffer of size %lld %p %p", numShorts, result, *env);
+    short *result = (short *) calloc(1, numShorts * 2);
 
-    fluid_synth_write_s16(synth, numShorts, result,
-                          0, 1, result, 0, 1);
-//    __android_log_print(ANDROID_LOG_DEBUG,
-//                        "FLD", "got buffer of size %lld", numShorts);
+    fluid_synth_write_s16(synth, numShorts, result, 0, 1, result, 0, 1);
 
     jshortArray retArray = (*env)->NewShortArray(env, numShorts);
-    (*env)->
-            SetShortArrayRegion(env, retArray,
-                                0, numShorts, result);
+    (*env)->SetShortArrayRegion(env, retArray, 0, numShorts, result);
     free(result);
 
-    return
-            retArray;
+    return retArray;
 }
 
 JNIEXPORT void
 
 JNICALL Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_programChange(JNIEnv *env,
-                                                                                jclass thiz,
-                                                                                jint channel,
-                                                                                jint midiId) {
+                                                                                       jclass thiz,
+                                                                                       jint channel,
+                                                                                       jint midiId) {
     int ret = fluid_synth_program_change(synth, channel, midiId);
     if (ret != FLUID_OK) {
         __android_log_write(ANDROID_LOG_ERROR, "FLD", "Failed changing program");
@@ -76,9 +68,10 @@ JNICALL Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_program
 JNIEXPORT void
 
 JNICALL Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_noteOn(JNIEnv *env,
-                                                                         jclass thiz,
-                                                                         jint channel, jint midiVal,
-                                                                         jint velocity) {
+                                                                                jclass thiz,
+                                                                                jint channel,
+                                                                                jint midiVal,
+                                                                                jint velocity) {
     int ret = fluid_synth_noteon(synth, channel, midiVal, velocity);
     if (ret != FLUID_OK) {
         __android_log_print(ANDROID_LOG_ERROR, "FLD", "Failed note on %d %d", midiVal, velocity);
@@ -88,8 +81,9 @@ JNICALL Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_noteOn(
 JNIEXPORT void
 
 JNICALL Java_com_philblandford_mp3converter_engine_sample_FluidSamplerKt_noteOff(JNIEnv *env,
-                                                                          jclass thiz, jint channel,
-                                                                          jint midiVal) {
+                                                                                 jclass thiz,
+                                                                                 jint channel,
+                                                                                 jint midiVal) {
     int ret = fluid_synth_noteoff(synth, channel, midiVal);
     if (ret != FLUID_OK) {
         __android_log_write(ANDROID_LOG_ERROR, "FLD", "Failed note off");

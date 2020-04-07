@@ -47,7 +47,8 @@ fun midiToWaveFile(
   byteWriter.writeString("data")
   byteWriter.writeUInt(length.toUInt())
 
-  return flow {
+  sampler.open()
+  val ret = flow {
     emit(byteWriter.getBytes().toByteArray())
     processedList.withIndex().forEach { iv ->
       val percent = (iv.index.toFloat() / processedList.size) * 100
@@ -63,18 +64,23 @@ fun midiToWaveFile(
       emit(bytes.toByteArray())
     }
   }
+  sampler.close()
+  return ret
 }
 
 
 internal fun getSamples(eventSets: List<EventSet>, sampler: ISampler): List<Sample> {
 
   return runBlocking {
-    eventSets.map { eventSet ->
+    sampler.open()
+    val samples = eventSets.map { eventSet ->
       eventSet.events.forEach {
         sampler.passEvent(it)
       }
       Sample(sampler.getSample(eventSet.duration))
     }
+    sampler.close()
+    samples
   }
 }
 

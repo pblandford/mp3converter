@@ -46,7 +46,8 @@ private fun writeMidiSamples(
     midiFile.trackChunk, midiFile.header.format, midiFile.header.timingInterval,
     tempoFunc
   )
-  return flow {
+  sampler.open()
+  val ret = flow {
     processedList.withIndex().forEach { iv ->
       val percent = (iv.index.toFloat() / processedList.size) * 100
       updateProgress(percent.toInt())
@@ -56,6 +57,8 @@ private fun writeMidiSamples(
       emit(buf)
     }
   }
+  sampler.close()
+  return ret
 }
 
 private fun getTempoFunc(midiFile: MidiFile): (Delta) -> Long {

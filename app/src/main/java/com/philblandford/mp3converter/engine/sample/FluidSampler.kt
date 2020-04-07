@@ -10,11 +10,17 @@ import com.philblandford.mp3converter.engine.file.input.ProgramChangeEvent
 
 const val PERIOD_SIZE = 64
 
-class FluidSampler(soundFontPath: String) : ISampler {
+class FluidSampler(private val soundFontPath: String) : ISampler {
 
   init {
     System.loadLibrary("fluid-native")
+  }
+
+  override fun open() {
     openFluid(soundFontPath)
+  }
+
+  override fun close() {
   }
 
   override fun passEvent(midiEvent: MidiEvent) {

@@ -7,6 +7,8 @@ typealias Ms = Long
 typealias Delta = Int
 
 interface ISampler {
+  fun open()
+  fun close()
   fun passEvent(midiEvent: MidiEvent)
   fun getSample(length:Ms):List<Short>
 }

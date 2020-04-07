@@ -10,6 +10,14 @@ class SineSampler : ISampler {
   private val step = (2 * PI) / (sampleRate / frequency)
   private val amplitude = Short.MAX_VALUE
 
+  override fun open() {
+    TODO("Not yet implemented")
+  }
+
+  override fun close() {
+    TODO("Not yet implemented")
+  }
+
   override fun passEvent(midiEvent: MidiEvent) {
   }
 
