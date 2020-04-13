@@ -1,5 +1,6 @@
 package com.philblandford.mp3converter.ui.conversion
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,4 +30,8 @@ class ConvertDialogFragment : DialogFragment() {
     return inflater.inflate(R.layout.fragment_convert_dialog, container, false)
   }
 
+  override fun onDismiss(dialog: DialogInterface) {
+    viewModel.cancel()
+    super.onDismiss(dialog)
+  }
 }

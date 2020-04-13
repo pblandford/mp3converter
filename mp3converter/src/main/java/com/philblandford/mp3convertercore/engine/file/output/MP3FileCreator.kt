@@ -1,0 +1,8 @@
+package com.philblandford.mp3convertercore.engine.file.output
+
+fun createMp3File(dataChunks:List<Mp3Data>): Mp3File {
+
+  return Mp3File(
+      dataChunks
+  )
+}

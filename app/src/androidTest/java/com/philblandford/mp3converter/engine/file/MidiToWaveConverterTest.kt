@@ -3,14 +3,15 @@ package com.philblandford.mp3converter.engine.file
 import android.content.Context
 import android.os.Environment
 import androidx.test.platform.app.InstrumentationRegistry
-import com.philblandford.mp3converter.engine.encode.IEncoder
-import com.philblandford.mp3converter.engine.encode.LameEncoder
-import com.philblandford.mp3converter.engine.sample.FluidSampler
-import com.philblandford.mp3converter.engine.sample.ISampler
+import com.philblandford.mp3convertercore.engine.encode.IEncoder
+import com.philblandford.mp3convertercore.engine.encode.LameEncoder
+import com.philblandford.mp3convertercore.engine.file.convertMidiToMp3
+import com.philblandford.mp3convertercore.engine.file.convertMidiToWave
+import com.philblandford.mp3convertercore.engine.sample.FluidSampler
+import com.philblandford.mp3convertercore.engine.sample.ISampler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.withContext
 import org.apache.commons.io.FileUtils
 import org.apache.commons.io.IOUtils
@@ -31,7 +32,11 @@ class MidiToWaveConverterTest {
     val sampler = getSampler()
     val midiBytes = getMidiFile()
     val outputStream = getOutputStream("wav")
-    val output = convertMidiToWave(midiBytes, sampler)
+    val output =
+        convertMidiToWave(
+            midiBytes,
+            sampler
+        )
 
     runBlocking {
       withContext(Dispatchers.IO) {
@@ -51,7 +56,12 @@ class MidiToWaveConverterTest {
     val outputStream = getOutputStream("mp3")
 
     val midiBytes = getMidiFile()
-    val output = convertMidiToMp3(midiBytes, sampler, encoder)
+    val output =
+        convertMidiToMp3(
+            midiBytes,
+            sampler,
+            encoder
+        )
     runBlocking {
       withContext(Dispatchers.IO) {
         output.collect { value ->
@@ -67,7 +77,9 @@ class MidiToWaveConverterTest {
     val inputStream = context.resources.assets.open("chaos.sf2")
     val sfFile = File(Environment.getExternalStorageDirectory(), "tmpfile.sf2")
     FileUtils.copyInputStreamToFile(inputStream, sfFile)
-    return FluidSampler(sfFile.absolutePath)
+    return FluidSampler(
+        sfFile.absolutePath
+    )
   }
 
   private fun getEncoder(): IEncoder {

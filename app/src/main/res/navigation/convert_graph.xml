@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_convert_options" >
         <argument
             android:name="midiFile"
-            app:argType="com.philblandford.mp3converter.MidiFileDescr" />
+            app:argType="com.philblandford.mp3convertercore.MediaFileDescr" />
         <action
             android:id="@+id/action_convertOptionsFragment_to_progressFragment"
             app:destination="@id/progressFragment" />
@@ -36,7 +36,7 @@
         android:id="@+id/successFragment"
         android:name="com.philblandford.mp3converter.ui.conversion.SuccessFragment"
         android:label="fragment_success"
-        tools:layout="@layout/fragment_success">
+        tools:layout="@layout/fragment_play">
         <action
             android:id="@+id/action_successFragment_to_file_picker_fragment"
             app:destination="@id/file_picker_fragment" />

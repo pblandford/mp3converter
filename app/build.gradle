@@ -9,19 +9,14 @@ android {
 
     defaultConfig {
         applicationId "com.philblandford.mp3converter"
-        minSdkVersion 29
+        minSdkVersion 23
         targetSdkVersion 29
 
-        versionCode 7
-        versionName "1.4"
+        versionCode 9
+        versionName "2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        externalNativeBuild {
-            cmake {
-                arguments "-DCMAKE_VERBOSE_MAKEFILE=ON"
-            }
-        }
     }
 
     compileOptions {
@@ -46,21 +41,8 @@ android {
         }
     }
 
-
     viewBinding {
         enabled = true
-    }
-
-    sourceSets {
-        main {
-            jniLibs.srcDirs 'libs'
-        }
-    }
-
-    externalNativeBuild {
-        cmake {
-            path file('CMakeLists.txt')
-        }
     }
 
     configurations.all {
@@ -80,7 +62,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation 'androidx.fragment:fragment-ktx:1.2.3'
+    implementation 'androidx.fragment:fragment-ktx:1.2.4'
     implementation 'com.droidninja:filepicker:2.2.1'
     implementation "com.google.android.material:material:1.1.0"
     implementation "org.koin:koin-androidx-scope:$koin_version"
@@ -93,6 +75,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation project(path: ':mp3converter')
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.hamcrest:hamcrest-all:1.3'

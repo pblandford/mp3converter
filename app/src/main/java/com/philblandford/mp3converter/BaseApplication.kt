@@ -1,11 +1,8 @@
 package com.philblandford.mp3converter
 
 import android.app.Application
-import android.os.Environment
-import com.philblandford.mp3converter.engine.encode.IEncoder
-import com.philblandford.mp3converter.engine.encode.LameEncoder
-import com.philblandford.mp3converter.engine.sample.FluidSampler
-import com.philblandford.mp3converter.engine.sample.ISampler
+import com.philblandford.mp3convertercore.Converter
+import com.philblandford.mp3convertercore.FileGetter
 import com.philblandford.mp3converter.repository.FileConverter
 import com.philblandford.mp3converter.repository.MediaFileGetter
 import org.apache.commons.io.FileUtils
@@ -15,26 +12,26 @@ import java.io.File
 
 class BaseApplication : Application() {
 
+  private lateinit var soundFontPath:String
+
   override fun onCreate() {
+    soundFontPath = getSoundFontPath()
     initKoin()
     super.onCreate()
   }
 
   private fun initKoin() {
-    val sampler = getSampler()
     val module = module {
-      single<FileGetter> { MediaFileGetter(contentResolver) }
-      single<Converter> { FileConverter(contentResolver) }
-      single<IEncoder> { LameEncoder() }
-      single { sampler }
+      single<FileGetter> { MediaFileGetter(contentResolver, applicationContext) }
+      single<Converter> { FileConverter(contentResolver, soundFontPath) }
     }
     startKoin { modules(module) }
   }
 
-  private fun getSampler(): ISampler {
+  private fun getSoundFontPath(): String {
     val inputStream = resources.assets.open("chaos.sf2")
     val sfFile = File(cacheDir, "tmpfile.sf2")
     FileUtils.copyInputStreamToFile(inputStream, sfFile)
-    return FluidSampler(sfFile.absolutePath)
+    return sfFile.absolutePath
   }
 }

@@ -30,12 +30,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:textColor="?android:attr/textColor"
+            android:buttonTint="?android:attr/textColor"
             android:text="@string/mp3" />
 
         <RadioButton
             android:id="@+id/button_wav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="?android:attr/textColor"
+            android:textColor="?android:attr/textColor"
             android:text="@string/wav" />
 
     </RadioGroup>
@@ -44,6 +48,9 @@
         android:id="@+id/button_go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
         android:text="@string/go"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

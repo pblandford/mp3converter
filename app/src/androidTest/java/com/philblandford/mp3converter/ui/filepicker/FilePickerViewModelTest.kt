@@ -1,11 +1,9 @@
 package com.philblandford.mp3converter.ui.filepicker
 
 import android.content.Context
-import android.net.Uri
 import androidx.test.platform.app.InstrumentationRegistry
-import com.philblandford.mp3converter.Converter
-import com.philblandford.mp3converter.FileGetter
-import com.philblandford.mp3converter.MidiFileDescr
+import com.philblandford.mp3convertercore.Converter
+import com.philblandford.mp3convertercore.FileGetter
 import com.philblandford.mp3converter.stubs.StubConverter
 import com.philblandford.mp3converter.stubs.StubFileGetter
 import org.junit.After
@@ -35,7 +33,7 @@ class FilePickerViewModelTest {
   @Test
   fun testGetFiles() {
     val expected = StubFileGetter(context).getMidiFiles()
-    val received = FilePickerViewModel().getFileNames()
+    val received = FilePickerViewModel().getConvertedFileNames()
     assertEquals(expected, received)
   }
 

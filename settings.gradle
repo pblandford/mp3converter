@@ -1,2 +1,3 @@
+include ':mp3converter'
 include ':app'
 rootProject.name = "Mp3Converter"

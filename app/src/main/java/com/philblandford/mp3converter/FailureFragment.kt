@@ -20,7 +20,7 @@ class FailureFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View? {
     binding = FragmentFailureBinding.inflate(inflater)
-    val message = viewModel.getProgressData().value?.failure?.message.let { message ->
+    val message = viewModel.getProgressData().value?.exception?.message.let { message ->
       getString(R.string.convert_failed, viewModel.midiFileDescr?.name ?: "", message)
     } ?: getString(R.string.failure_unknown)
     binding.textFailure.text = message

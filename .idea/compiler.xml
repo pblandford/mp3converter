@@ -4,6 +4,7 @@
     <bytecodeTargetLevel>
       <module name="app" target="1.8" />
       <module name="Mp3Converter.app" target="1.8" />
+      <module name="Mp3Converter.mp3converter" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

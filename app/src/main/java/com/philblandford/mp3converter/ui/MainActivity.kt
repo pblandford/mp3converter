@@ -1,24 +1,18 @@
 package com.philblandford.mp3converter.ui
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.google.android.gms.ads.*
 import com.philblandford.mp3converter.BuildConfig
-import com.philblandford.mp3converter.MidiFileDescr
+import com.philblandford.mp3convertercore.MediaFileDescr
 import com.philblandford.mp3converter.R
 import com.philblandford.mp3converter.databinding.ActivityMainBinding
 import com.philblandford.mp3converter.ui.filepicker.FilePickerFragmentDirections
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 private lateinit var binding: ActivityMainBinding
 
@@ -26,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    checkPermissions()
+    initScreen()
   }
 
   private fun initScreen() {
@@ -97,7 +91,8 @@ class MainActivity : AppCompatActivity() {
     if (intent?.action == "android.intent.action.VIEW") {
       intent.data?.let { uri ->
         val name = getFileName(uri)
-        val midiFile = MidiFileDescr(0, name, uri)
+        val midiFile =
+            MediaFileDescr(0, name, uri)
         val action =
           FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(
             midiFile

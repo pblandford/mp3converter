@@ -3,27 +3,35 @@ package com.philblandford.mp3converter.repository
 import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.ContentValues
+import android.content.Context
 import android.net.Uri
+import android.os.Environment
+import android.os.FileObserver
 import android.provider.MediaStore
-import com.philblandford.mp3converter.ExportType
-import com.philblandford.mp3converter.FileGetter
-import com.philblandford.mp3converter.MidiFileDescr
-import com.philblandford.mp3converter.OutputFileDescr
+import com.philblandford.mp3convertercore.FileGetter
+import com.philblandford.mp3convertercore.MediaFileDescr
+import com.philblandford.mp3convertercore.OutputFileDescr
+import com.philblandford.mp3convertercore.api.ExportType
 import org.apache.commons.io.FilenameUtils
+import org.apache.commons.io.IOUtils
 import org.jetbrains.annotations.TestOnly
-import java.io.OutputStream
-import java.util.*
+import java.io.File
+import java.io.FileOutputStream
 
 
-class MediaFileGetter(private val contentResolver: ContentResolver) : FileGetter {
+class MediaFileGetter(
+  private val contentResolver: ContentResolver,
+  private val context: Context
+) : FileGetter {
 
-  override fun getMidiFiles(): List<MidiFileDescr> {
-    val downloads = doQuery(MediaStore.Downloads.EXTERNAL_CONTENT_URI)
+  private var observer: FileObserver? = null
+
+  override fun getMidiFiles(): List<MediaFileDescr> {
     val media = doQuery(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
     return (media).sortedBy { it.name }
   }
 
-  private fun doQuery(uri: Uri): List<MidiFileDescr> {
+  private fun doQuery(uri: Uri): List<MediaFileDescr> {
     val projection = arrayOf(
       MediaStore.Audio.Media._ID,
       MediaStore.Audio.Media.DISPLAY_NAME,
@@ -40,7 +48,7 @@ class MediaFileGetter(private val contentResolver: ContentResolver) : FileGetter
       null,
       sortOrder
     )
-    val results = mutableListOf<MidiFileDescr>()
+    val results = mutableListOf<MediaFileDescr>()
     query?.use { cursor ->
       val idColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)
       val nameColumn =
@@ -51,41 +59,79 @@ class MediaFileGetter(private val contentResolver: ContentResolver) : FileGetter
         val name = cursor.getString(nameColumn)
         val baseName = FilenameUtils.getBaseName(name)
         val contentUri = ContentUris.withAppendedId(uri, id)
-        results.add(MidiFileDescr(id, baseName, contentUri))
+        results.add(MediaFileDescr(id, baseName, contentUri))
       }
     }
     return results
   }
 
   override fun createNewFile(name: String, type: ExportType): OutputFileDescr? {
+
     val extension = when (type) {
       ExportType.MP3 -> "mp3"
       ExportType.WAV -> "wav"
       ExportType.MIDI -> "mid"
     }
-    val fullName = "$name.$extension"
-    val values = ContentValues().apply {
-      put(MediaStore.Audio.Media.DISPLAY_NAME, fullName)
-      put(MediaStore.Audio.Media.MIME_TYPE, "audio/${type.name.toLowerCase(Locale.ENGLISH)}")
-      put(MediaStore.Audio.Media.RELATIVE_PATH, "Music/MidiToMP3Converter/")
-      put(MediaStore.Audio.Media.IS_PENDING, 1)
-    }
+    val fullName = "${FilenameUtils.getBaseName(name)}.$extension"
 
-    val path = "/Music/MidiToMP3Converter/$name.$extension"
-    val collection = MediaStore.Audio.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
-    return contentResolver.insert(collection, values)?.let { uri ->
-      contentResolver.openOutputStream(uri)?.let { os -> OutputFileDescr(uri, path, os) }
+    val dir = context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)
+    val file = File(dir, fullName)
+    if (file.exists()) {
+      file.delete()
     }
+    val output = FileOutputStream(file)
+    return OutputFileDescr(Uri.fromFile(file), fullName, output)
   }
 
   override fun finishSave(uri: Uri) {
     val values = ContentValues()
     values.put(MediaStore.Images.Media.IS_PENDING, 0)
-    contentResolver.update(uri, values, null, null)
   }
 
   override fun deleteFile(uri: Uri) {
     contentResolver.delete(uri, null, null)
+  }
+
+  override fun getMidiFileDescr(uri: Uri): MediaFileDescr? {
+
+    val arr = arrayOf(MediaStore.Audio.Media.DISPLAY_NAME, MediaStore.Audio.Media._ID)
+    val cursor = contentResolver.query(uri, arr, null, null, null)
+    return cursor?.let {
+
+
+      val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME)
+      val idIndex = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)
+      cursor.moveToFirst()
+      val name = cursor.getString(columnIndex)
+      val id = cursor.getLong(idIndex)
+      cursor.close()
+      MediaFileDescr(id, name, uri)
+    }
+  }
+
+  override fun export(srcUri: Uri, dstUri: Uri) {
+    val input = contentResolver.openInputStream(srcUri)
+
+    contentResolver.openFileDescriptor(dstUri, "w")?.use {
+      FileOutputStream(it.fileDescriptor).use { fos ->
+        fos.write(IOUtils.toByteArray(input))
+      }
+    }
+  }
+
+  override fun getConvertedFiles(): List<MediaFileDescr> {
+    val dir = context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)
+    return dir?.let {
+      getFilesAsDescrs(dir)
+    } ?: listOf()
+  }
+
+  override fun registerListener(listener: (List<MediaFileDescr>) -> Unit) {
+    context.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.let { dir ->
+      observer?.stopWatching()
+      observer = ConvertedFileObserver(dir, listener)
+      observer?.startWatching()
+    }
   }
 
   @TestOnly
@@ -93,5 +139,24 @@ class MediaFileGetter(private val contentResolver: ContentResolver) : FileGetter
     val files = getMidiFiles()
     files.forEach { deleteFile(it.uri) }
 
+  }
+
+  private fun getFilesAsDescrs(dir: File): List<MediaFileDescr> {
+    return dir.list()?.map { fileName ->
+      val uri = Uri.fromFile(File(dir, fileName))
+      MediaFileDescr(0L, fileName, uri)
+    } ?: listOf()
+  }
+
+  private inner class ConvertedFileObserver(
+    private val dir: File,
+    private val listener: (List<MediaFileDescr>) -> Unit
+  ) : FileObserver(dir) {
+    override fun onEvent(event: Int, path: String?) {
+      if (event == CREATE) {
+        val files = getFilesAsDescrs(dir)
+        listener(files)
+      }
+    }
   }
 }
