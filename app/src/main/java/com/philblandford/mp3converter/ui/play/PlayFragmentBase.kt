@@ -35,11 +35,6 @@ abstract class PlayFragmentBase : DialogFragment() {
     }
   }
 
-  override fun onDismiss(dialog: DialogInterface) {
-    backToMain()
-    super.onDismiss(dialog)
-  }
-
   protected fun save() {
     val exportType = getExportType()
     val ext = if (exportType == ExportType.MP3) "mp3" else "wav"

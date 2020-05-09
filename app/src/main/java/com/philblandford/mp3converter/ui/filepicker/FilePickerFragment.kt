@@ -1,6 +1,7 @@
 package com.philblandford.mp3converter.ui.filepicker
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -30,7 +32,7 @@ class FilePickerFragment() : Fragment() {
 
   private lateinit var binding: FilePickerBinding
   private val viewModel: FilePickerViewModel by viewModels()
-  private val conversionViewModel:ConversionViewModel by activityViewModels()
+  private val conversionViewModel: ConversionViewModel by activityViewModels()
   private lateinit var files: List<MediaFileDescr>
 
   override fun onCreateView(
@@ -58,7 +60,13 @@ class FilePickerFragment() : Fragment() {
   private fun openDocTree() {
     val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
       addCategory(Intent.CATEGORY_OPENABLE)
-      type = "audio/midi"
+      type = "*/*"
+      putExtra(
+        Intent.EXTRA_MIME_TYPES, arrayOf(
+        "audio/midi", "audio/x-midi", "application/x-midi",
+        "audio/x-mid"
+      )
+      )
     }
     startActivityForResult(intent, 0)
   }
@@ -134,18 +142,33 @@ class FilePickerFragment() : Fragment() {
   private inner class FileAdapter(val fileDescrs: List<MediaFileDescr>) :
     RecyclerView.Adapter<FileViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FileViewHolder {
-      val binding = FilePickerItemBinding.inflate(LayoutInflater.from(parent.context))
+      val binding =
+        FilePickerItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
       return FileViewHolder(binding.root) { fileDescrs[it] }
     }
 
     override fun onBindViewHolder(holder: FileViewHolder, position: Int) {
       val descr = fileDescrs[position]
       holder.itemView.findViewById<TextView>(R.id.file_text).text = descr.name
-
+      holder.itemView.findViewById<View>(R.id.delete_button).initDelete(descr)
     }
 
     override fun getItemCount(): Int {
       return fileDescrs.size
+    }
+  }
+
+  private fun View.initDelete(descr: MediaFileDescr) {
+    setOnClickListener {
+      AlertDialog.Builder(context)
+        .setMessage(getString(R.string.delete_confirm, descr.name))
+        .setPositiveButton(R.string.ok) { _, _ ->
+          descr.uri.toFile().delete()
+          refreshRecyclerView()
+        }.setNegativeButton(R.string.cancel) { dialog, _ ->
+          dialog.dismiss()
+        }
+        .show()
     }
   }
 }

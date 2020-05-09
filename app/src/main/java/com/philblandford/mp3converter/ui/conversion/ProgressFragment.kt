@@ -38,13 +38,17 @@ class ProgressFragment : Fragment() {
   }
 
   private fun showSuccess() {
-    val action = ProgressFragmentDirections.actionProgressFragmentToBlankFragment()
-    findNavController().navigate(action)
+    if (findNavController().currentDestination?.id == R.id.progressFragment) {
+      val action = ProgressFragmentDirections.actionProgressFragmentToBlankFragment()
+      findNavController().navigate(action)
+    }
   }
 
   private fun showFailure() {
-    val action = ProgressFragmentDirections.actionProgressFragmentToFailureFragment()
-    findNavController().navigate(action)
+    if (findNavController().currentDestination?.id == R.id.progressFragment) {
+      val action = ProgressFragmentDirections.actionProgressFragmentToFailureFragment()
+      findNavController().navigate(action)
+    }
   }
 
   private fun showProgress(progress:Int) {

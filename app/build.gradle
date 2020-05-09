@@ -9,11 +9,11 @@ android {
 
     defaultConfig {
         applicationId "com.philblandford.mp3converter"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 29
 
-        versionCode 9
-        versionName "2.1"
+        versionCode 10
+        versionName "2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
