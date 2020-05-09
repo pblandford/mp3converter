@@ -38,13 +38,11 @@ class MediaFileGetter(
       MediaStore.Audio.Media.SIZE
     )
 
-    val selection = "${MediaStore.Audio.Media.DISPLAY_NAME} like \"%mid\""
-
     val sortOrder = MediaStore.Audio.Media.DISPLAY_NAME
     val query = contentResolver.query(
       uri,
       projection,
-      selection,
+      null,
       null,
       sortOrder
     )
