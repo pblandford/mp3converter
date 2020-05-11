@@ -30,23 +30,6 @@ class MainActivity : AppCompatActivity() {
     checkIntent()
   }
 
-  private fun checkPermissions() {
-    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-      != PackageManager.PERMISSION_GRANTED || checkSelfPermission(
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-      ) != PackageManager.PERMISSION_DENIED
-    ) {
-      requestPermissions(
-        arrayOf(
-          Manifest.permission.READ_EXTERNAL_STORAGE,
-          Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ), 0
-      )
-    } else {
-      initScreen()
-    }
-  }
-
   override fun onRequestPermissionsResult(
     requestCode: Int,
     permissions: Array<String>, grantResults: IntArray
@@ -92,12 +75,14 @@ class MainActivity : AppCompatActivity() {
       intent.data?.let { uri ->
         val name = getFileName(uri)
         val midiFile =
-            MediaFileDescr(0, name, uri)
-        val action =
-          FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(
-            midiFile
-          )
-        findNavController(R.id.nav_host_fragment).navigate(action)
+          MediaFileDescr(0, name, uri)
+        if (findNavController(R.id.nav_host_fragment).currentDestination?.id == R.id.file_picker_fragment) {
+          val action =
+            FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(
+              midiFile
+            )
+          findNavController(R.id.nav_host_fragment).navigate(action)
+        }
       }
     }
   }
@@ -105,8 +90,8 @@ class MainActivity : AppCompatActivity() {
   private fun getFileName(uri: Uri): String {
     val default = uri.path ?: "untitled"
 
-    return if (uri.getScheme().equals("content")) {
-      val cursor = getContentResolver().query(uri, null, null, null, null);
+    return if (uri.scheme.equals("content")) {
+      val cursor = contentResolver.query(uri, null, null, null, null)
       cursor?.use {
         if (cursor.moveToFirst()) {
           cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))

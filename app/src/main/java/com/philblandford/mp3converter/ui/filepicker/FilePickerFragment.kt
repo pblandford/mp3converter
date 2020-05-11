@@ -1,3 +1,4 @@
+
 package com.philblandford.mp3converter.ui.filepicker
 
 import android.app.Activity
@@ -135,8 +136,10 @@ class FilePickerFragment() : Fragment() {
   }
 
   private fun navigateToPlay(descr: MediaFileDescr) {
-    val action = FilePickerFragmentDirections.actionFilePickerFragmentToPlayFragment(descr)
-    findNavController().navigate(action)
+    if (findNavController().currentDestination?.id == R.id.file_picker_fragment) {
+      val action = FilePickerFragmentDirections.actionFilePickerFragmentToPlayFragment(descr)
+      findNavController().navigate(action)
+    }
   }
 
   private inner class FileAdapter(val fileDescrs: List<MediaFileDescr>) :

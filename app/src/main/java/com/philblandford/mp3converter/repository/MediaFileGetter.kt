@@ -17,6 +17,7 @@ import org.apache.commons.io.IOUtils
 import org.jetbrains.annotations.TestOnly
 import java.io.File
 import java.io.FileOutputStream
+import java.lang.Exception
 
 
 class MediaFileGetter(
@@ -96,12 +97,15 @@ class MediaFileGetter(
     val cursor = contentResolver.query(uri, arr, null, null, null)
     return cursor?.let {
 
-
       val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME)
-      val idIndex = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)
+      val idIndex = try {
+        cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)
+      } catch (e:Exception) {
+        null
+      }
       cursor.moveToFirst()
       val name = cursor.getString(columnIndex)
-      val id = cursor.getLong(idIndex)
+      val id = idIndex?.let {  cursor.getLong(idIndex) } ?: 0
       cursor.close()
       MediaFileDescr(id, name, uri)
     }

@@ -15,14 +15,6 @@ class FilePickerViewModel : ViewModel(), KoinComponent {
   private val fileGetter: FileGetter by inject()
   private val convertedFiles = MutableLiveData<List<MediaFileDescr>>()
 
-//  init {
-//    fileGetter.registerListener { files ->
-//      convertedFiles.postValue(files.sorted())
-//    }
-//    val files = fileGetter.getConvertedFiles()
-//    convertedFiles.postValue(files.sorted())
-//  }
-
   fun getConvertedFileNames(): LiveData<List<MediaFileDescr>> {
     return convertedFiles
   }
