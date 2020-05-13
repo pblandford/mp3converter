@@ -1,22 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/Black</item>
-        <item name="android:buttonStyle">@style/Buttons</item>
+        <!--item name="android:background">@color/Black</item>
+        <item name="android:buttonStyle">@style/Buttons</item-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorText</item>
+        <!--item name="android:textColor">@color/colorText</item>
         <item name="android:textColorPrimary">@color/colorText</item>
-        <item name="android:colorAccent">@color/colorText</item>
+        <item name="android:colorAccent">@color/colorText</item-->
     </style>
 
-    <style name="Buttons" parent="AppTheme">
+    <!--style name="Buttons" parent="AppTheme">
         <item name="android:background">@color/DarkSlateGray</item>
-    </style>
+    </style-->
 
     <style name="MainText" parent="TextAppearance.AppCompat">
         <item name="android:textSize">18sp</item>

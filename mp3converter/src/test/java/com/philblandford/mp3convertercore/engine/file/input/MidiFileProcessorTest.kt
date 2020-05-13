@@ -77,8 +77,7 @@ class MidiFileProcessorTest {
         processEventList(
             trackChunk,
             MidiFormat.SINGLE,
-            ppqn,
-            ::getTempo
+            ppqn
         )
     assertEquals(
       listOf(
@@ -132,7 +131,7 @@ class MidiFileProcessorTest {
       )
     )
     val ppqn = 96
-    fun getTempo(dt: Delta) = 1000L
+    fun getTempo(dt: Delta) = 500000L
     val trackChunk =
         TrackChunk(
             listOf(
@@ -148,13 +147,12 @@ class MidiFileProcessorTest {
         processEventList(
             trackChunk,
             MidiFormat.SINGLE,
-            ppqn,
-            ::getTempo
+            ppqn
         )
     assertEquals(
       listOf(
           EventSet(
-              1000, listOf(
+              DEFAULT_MSPQN, listOf(
                   NoteOnEvent(
                       42,
                       100,

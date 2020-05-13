@@ -61,12 +61,9 @@ private fun writeMidiSamples(
     updateProgress: (Int) -> Unit
 ): Flow<ByteArray> {
 
-  val tempoFunc =
-      getTempoFunc(midiFile)
   val processedList =
       processEventList(
-          midiFile.trackChunk, midiFile.header.format, midiFile.header.timingInterval,
-          tempoFunc
+          midiFile.trackChunk, midiFile.header.format, midiFile.header.timingInterval
       )
   sampler.open()
   val ret = flow {
@@ -87,21 +84,3 @@ private fun writeMidiSamples(
   return ret
 }
 
-private fun getTempoFunc(midiFile: MidiFile): (Delta) -> Long {
-  return midiFile.trackChunk.tracks.find { it.events.any { it.second is TempoEvent } }
-    ?.let { tempoTrack ->
-      { input: Int ->
-          getTempo(
-              tempoTrack,
-              input
-          )
-      }
-    } ?: { _ -> 120 }
-}
-
-private fun getTempo(tempoTrack: Track, offset: Delta): Long {
-  val tempoEvents =
-    tempoTrack.events.filter { it.second is TempoEvent }.map { it as Pair<Int, TempoEvent> }
-  return tempoEvents.dropLastWhile { it.first >= offset }.lastOrNull()?.second?.msPerCrotchet
-    ?: DEFAULT_MSPQN
-}

@@ -1,5 +1,8 @@
 package com.philblandford.mp3converter.ui.play
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,6 +36,12 @@ class PlayFragment : PlayFragmentBase() {
     binding.buttonShare.setOnClickListener { share() }
     binding.buttonSave.setOnClickListener { save() }
     return binding.root
+  }
+
+  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    val dialog = super.onCreateDialog(savedInstanceState)
+    dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    return dialog
   }
 
   override fun backToMain() {

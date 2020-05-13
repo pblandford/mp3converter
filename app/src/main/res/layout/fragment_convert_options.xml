@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:textAppearance="@style/MainText"
         android:text="@string/select_format"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,16 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:textColor="?android:attr/textColor"
-            android:buttonTint="?android:attr/textColor"
             android:text="@string/mp3" />
 
         <RadioButton
             android:id="@+id/button_wav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:buttonTint="?android:attr/textColor"
-            android:textColor="?android:attr/textColor"
             android:text="@string/wav" />
 
     </RadioGroup>

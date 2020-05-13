@@ -1,6 +1,9 @@
 package com.philblandford.mp3converter.ui.conversion
 
+import android.app.Dialog
 import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +24,12 @@ class ConvertDialogFragment : DialogFragment() {
     super.onCreate(savedInstanceState)
     viewModel.clear()
     viewModel.midiFileDescr = args.midiFile
+  }
+
+  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    val dialog = super.onCreateDialog(savedInstanceState)
+    dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    return dialog
   }
 
   override fun onCreateView(
