@@ -89,3 +89,28 @@ JNICALL Java_com_philblandford_mp3convertercore_engine_sample_FluidSamplerKt_not
         __android_log_write(ANDROID_LOG_ERROR, "FLD", "Failed note off");
     }
 }
+
+JNIEXPORT void
+
+JNICALL Java_com_philblandford_mp3convertercore_engine_sample_FluidSamplerKt_controlChange(JNIEnv *env,
+                                                                                     jclass thiz,
+                                                                                     jint channel,
+                                                                                     jint function,
+                                                                                     jint value) {
+    int ret = fluid_synth_cc(synth, channel, function, value);
+    if (ret != FLUID_OK) {
+        __android_log_write(ANDROID_LOG_ERROR, "FLD", "Failed control change");
+    }
+}
+
+JNIEXPORT void
+
+JNICALL Java_com_philblandford_mp3convertercore_engine_sample_FluidSamplerKt_channelPressure(JNIEnv *env,
+                                                                                           jclass thiz,
+                                                                                           jint channel,
+                                                                                           jint pressure) {
+    int ret = fluid_synth_channel_pressure(synth, channel, pressure);
+    if (ret != FLUID_OK) {
+        __android_log_write(ANDROID_LOG_ERROR, "FLD", "Failed control change");
+    }
+}

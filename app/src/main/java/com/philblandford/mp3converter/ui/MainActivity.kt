@@ -2,9 +2,11 @@ package com.philblandford.mp3converter.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.google.android.gms.ads.*
@@ -35,6 +37,11 @@ class MainActivity : AppCompatActivity() {
     permissions: Array<String>, grantResults: IntArray
   ) {
     initScreen()
+  }
+
+  override fun onConfigurationChanged(newConfig: Configuration) {
+    super.onConfigurationChanged(newConfig)
+    Log.e("MAIN", "onConfigurationChanged")
   }
 
   private fun initAds() {

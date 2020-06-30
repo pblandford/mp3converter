@@ -2,9 +2,11 @@ package com.philblandford.mp3converter.ui.conversion
 
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +41,13 @@ class ConvertDialogFragment : DialogFragment() {
     return inflater.inflate(R.layout.fragment_convert_dialog, container, false)
   }
 
+  override fun onConfigurationChanged(newConfig: Configuration) {
+    super.onConfigurationChanged(newConfig)
+    Log.e("CDF", "OnConfigurationChanged")
+  }
+
   override fun onDismiss(dialog: DialogInterface) {
+    Log.e("CDF", "onDismiss")
     viewModel.cancel()
     super.onDismiss(dialog)
   }

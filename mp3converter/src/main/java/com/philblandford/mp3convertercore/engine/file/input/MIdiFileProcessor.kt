@@ -197,13 +197,3 @@ private fun PairList<EventSet>.setDurations(ppqn: Int, getTempo: (Delta) -> Long
         )
     }
 }
-
-private fun getTempoEvents(track: Track): PairList<TempoEvent> {
-
-    var offset = 0
-    val mapped = track.events.map { (delta, event) ->
-        offset += delta
-        offset to event
-    }
-    return mapped.filter { it.second is TempoEvent }.map { it.first to it.second as TempoEvent }
-}
