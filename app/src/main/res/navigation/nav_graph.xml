@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_file_picker_fragment_to_playFragment"
             app:destination="@id/playFragment" />
+        <action
+            android:id="@+id/action_file_picker_fragment_to_reportProblemFragment"
+            app:destination="@id/reportProblemFragment" />
     </fragment>
     <dialog
         android:id="@+id/convertDialogFragment"
@@ -38,5 +41,10 @@
             android:name="desc"
             app:argType="com.philblandford.mp3convertercore.MediaFileDescr" />
     </dialog>
+    <dialog
+        android:id="@+id/reportProblemFragment"
+        android:name="com.philblandford.mp3converter.ui.conversion.ReportProblemFragment"
+        android:label="fragment_report_problem"
+        tools:layout="@layout/fragment_report_problem" />
 
 </navigation>

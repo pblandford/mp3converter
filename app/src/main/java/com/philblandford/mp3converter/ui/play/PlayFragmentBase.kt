@@ -26,7 +26,7 @@ abstract class PlayFragmentBase : DialogFragment() {
       val packageName = activity?.packageName
       val apkURI = FileProvider.getUriForFile(activity?.applicationContext!!, "$packageName.provider", src.toFile())
 
-      val shareIntent: Intent = Intent().apply {
+      val shareIntent = Intent().apply {
         action = Intent.ACTION_SEND
         putExtra(Intent.EXTRA_STREAM, apkURI)
         type = getMime()

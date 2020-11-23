@@ -3,7 +3,7 @@ package com.philblandford.mp3converter.repository
 import android.database.Cursor
 import android.provider.MediaStore
 import androidx.test.platform.app.InstrumentationRegistry
-import com.philblandford.mp3converter.ExportType
+import com.philblandford.mp3convertercore.api.ExportType
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +17,7 @@ class MediaFileGetterTest {
   @Before
   fun setUp() {
     val contentResolver = InstrumentationRegistry.getInstrumentation().context.contentResolver
-    mediaFileGetter = MediaFileGetter(contentResolver)
+    mediaFileGetter = MediaFileGetter(contentResolver, InstrumentationRegistry.getInstrumentation().targetContext)
   }
 
   @After

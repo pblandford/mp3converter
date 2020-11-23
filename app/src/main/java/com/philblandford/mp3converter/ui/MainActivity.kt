@@ -10,18 +10,24 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.google.android.gms.ads.*
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.philblandford.mp3converter.BuildConfig
 import com.philblandford.mp3convertercore.MediaFileDescr
 import com.philblandford.mp3converter.R
 import com.philblandford.mp3converter.databinding.ActivityMainBinding
 import com.philblandford.mp3converter.ui.filepicker.FilePickerFragmentDirections
+import kotlin.random.Random
 
 private lateinit var binding: ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+  private lateinit var reviewManager: ReviewManager
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    reviewManager = ReviewManagerFactory.create(this)
     initScreen()
   }
 
@@ -33,8 +39,8 @@ class MainActivity : AppCompatActivity() {
   }
 
   override fun onRequestPermissionsResult(
-    requestCode: Int,
-    permissions: Array<String>, grantResults: IntArray
+      requestCode: Int,
+      permissions: Array<String>, grantResults: IntArray
   ) {
     initScreen()
   }
@@ -70,8 +76,33 @@ class MainActivity : AppCompatActivity() {
     interstitialAd.loadAd(AdRequest.Builder().build())
     findNavController(R.id.nav_host_fragment).addOnDestinationChangedListener { controller, destination, arguments ->
       if (destination.id == R.id.file_picker_fragment) {
-        if (interstitialAd.isLoaded) {
-          interstitialAd.show()
+        val askReview = isEstablishedUser() && Random.nextInt(2) == 0
+        if (askReview) {
+          launchReview()
+        } else {
+          if (interstitialAd.isLoaded) {
+            interstitialAd.show()
+          }
+        }
+      }
+    }
+  }
+
+  private fun isEstablishedUser(): Boolean {
+    val installDate = packageManager.getPackageInfo(packageName, 0).firstInstallTime
+    val now = System.currentTimeMillis()
+    return (now - installDate) > 1000 * 60 * 60 * 24 * 2
+  }
+
+  private fun launchReview() {
+
+    val request = reviewManager.requestReviewFlow()
+    request.addOnCompleteListener { req ->
+      if (req.isSuccessful) {
+        Log.e("PF", "request successful")
+        val flow = reviewManager.launchReviewFlow(this, request.result)
+        flow.addOnCompleteListener {
+          Log.e("PF", "Done")
         }
       }
     }
@@ -86,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         if (findNavController(R.id.nav_host_fragment).currentDestination?.id == R.id.file_picker_fragment) {
           val action =
             FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(
-              midiFile
+                midiFile
             )
           findNavController(R.id.nav_host_fragment).navigate(action)
         }

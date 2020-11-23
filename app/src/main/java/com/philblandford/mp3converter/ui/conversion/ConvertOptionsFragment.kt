@@ -15,11 +15,6 @@ class ConvertOptionsFragment : Fragment() {
   private lateinit var binding: FragmentConvertOptionsBinding
   private val viewModel:ConversionViewModel by activityViewModels()
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-
-  }
-
   override fun onDestroyView() {
     activity?.title = getString(R.string.app_name)
     super.onDestroyView()

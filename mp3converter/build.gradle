@@ -38,11 +38,11 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
-        main {
-            jniLibs.srcDirs 'libs'
-        }
-    }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs 'libs'
+//        }
+//    }
 
     externalNativeBuild {
         cmake {

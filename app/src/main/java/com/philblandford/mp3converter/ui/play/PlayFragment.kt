@@ -5,12 +5,15 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.philblandford.mp3convertercore.api.ExportType
 import com.philblandford.mp3converter.databinding.FragmentPlayBinding
 import org.apache.commons.io.FilenameUtils
@@ -67,7 +70,6 @@ class PlayFragment : PlayFragmentBase() {
 
   override fun exportFile(dest: Uri) {
     getOutputUri()?.let { src ->
-
       viewModel.exportFile(src, dest)
     }
   }
@@ -78,6 +80,7 @@ class PlayFragment : PlayFragmentBase() {
       binding.videoView.videoControls?.setCanHide(false)
     }
   }
+
 
 
 }

@@ -1,4 +1,3 @@
-
 package com.philblandford.mp3converter.ui.filepicker
 
 import android.app.Activity
@@ -27,7 +26,9 @@ import com.philblandford.mp3converter.databinding.FilePickerItemBinding
 import com.philblandford.mp3converter.ui.conversion.ConversionViewModel
 import com.philblandford.mp3converter.ui.conversion.ConvertStatus
 import com.philblandford.mp3converter.ui.conversion.Status
+import java.util.regex.Pattern
 
+private const val FILE_PICKER_REQUEST_CODE = 0
 
 class FilePickerFragment() : Fragment() {
 
@@ -44,6 +45,7 @@ class FilePickerFragment() : Fragment() {
     files = viewModel.getConvertedFilesStatic()
     binding = FilePickerBinding.inflate(inflater)
     initPickButton()
+    initProblemButton()
     return binding.root
   }
 
@@ -51,7 +53,7 @@ class FilePickerFragment() : Fragment() {
     super.onResume()
     initRecyclerView()
     refreshRecyclerView()
-    conversionViewModel.getStatus().observe(viewLifecycleOwner, Observer {
+    conversionViewModel.getStatus().observe(viewLifecycleOwner, {
       if (it.status == Status.COMPLETED) {
         refreshRecyclerView()
       }
@@ -64,9 +66,9 @@ class FilePickerFragment() : Fragment() {
       type = "*/*"
       putExtra(
         Intent.EXTRA_MIME_TYPES, arrayOf(
-        "audio/midi", "audio/x-midi", "application/x-midi",
-        "audio/x-mid"
-      )
+          "audio/midi", "audio/x-midi", "application/x-midi",
+          "audio/x-mid"
+        )
       )
     }
     startActivityForResult(intent, 0)
@@ -75,6 +77,12 @@ class FilePickerFragment() : Fragment() {
   private fun initPickButton() {
     binding.buttonSelect.setOnClickListener {
       openDocTree()
+    }
+  }
+
+  private fun initProblemButton() {
+    binding.buttonProblem.setOnClickListener {
+      navigateToReportProblem()
     }
   }
 
@@ -93,7 +101,6 @@ class FilePickerFragment() : Fragment() {
       }
     }
   }
-
 
   private fun initRecyclerView() {
 
@@ -132,6 +139,11 @@ class FilePickerFragment() : Fragment() {
       FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(
         midiFileDescr
       )
+    findNavController().navigate(action)
+  }
+
+  private fun navigateToReportProblem() {
+    val action = FilePickerFragmentDirections.actionFilePickerFragmentToReportProblemFragment()
     findNavController().navigate(action)
   }
 

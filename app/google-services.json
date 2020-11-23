@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "841515828194",
+    "firebase_url": "https://miditomp3converter.firebaseio.com",
+    "project_id": "miditomp3converter",
+    "storage_bucket": "miditomp3converter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841515828194:android:250f4be5b96b2713b1afbb",
+        "android_client_info": {
+          "package_name": "com.philblandford.mp3converter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841515828194-beaacqe2cfqnavhejq68f2ep9h1j8qea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwvymNLjolhRIbw7_FfltcC79XH-u183A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841515828194-beaacqe2cfqnavhejq68f2ep9h1j8qea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,5 +24,17 @@
     <string name="inter_id_test">ca-app-pub-3940256099942544/1033173712</string>
     <string name="banner_id_release">ca-app-pub-2643541606004324/1179974018</string>
     <string name="inter_id_release">ca-app-pub-2643541606004324/8483748967</string>
+    <string name="report_problem">Report a problem</string>
+    <string name="report_problem_text">Having trouble finding a file, or converting it?
+    A polite email describing the problem is more likely to fix the issue than a one-word negative Play Store review! Please explain:\n\n
+
+        - At what point did the app go wrong (eg, finding the file, converting it, playing it back)\n\n
+        - What happened? Was there an error message? Did the app just stop? It\'s useful to provide a screenshot if you can\n\n
+        - If possible, attach the MIDI file you were trying to convert
+    </string>
+    <string name="problem_email">philip.blandford@gmail.com</string>
+    <string name="problem_subject">Issue with Mp3Converter app</string>
+    <string name="rate_app">Rate This App</string>
+
 
 </resources>
