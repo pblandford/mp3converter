@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.collect
 import org.apache.commons.io.IOUtils
 import java.io.InputStream
 import java.io.OutputStream
+import java.lang.Exception
 
 enum class ExportType {
   MP3,
@@ -28,27 +29,38 @@ class MidiToMp3Converter(soundFontPath: String) {
 
   suspend fun convert(
       inputStream: InputStream, outputStream: OutputStream, exportType: ExportType,
-      updateProgress: (Int) -> Unit
-  ) {
+      updateProgress: (Int) -> Unit,
+      onFail:(ByteArray, Exception)->Unit,
+      ) {
     val bytes = IOUtils.toByteArray(inputStream)
+    try {
+      doConvert(bytes, outputStream, exportType, updateProgress)
+    } catch (e:Exception) {
+      onFail(bytes, e)
+    }
 
+  }
+
+  private suspend fun doConvert(bytes: ByteArray,
+                        outputStream: OutputStream, exportType: ExportType,
+                        updateProgress: (Int) -> Unit) {
     when (exportType) {
       ExportType.MP3 -> {
         encoder.start()
         convertMidiToMp3(
-            bytes,
-            sampler,
-            encoder,
-            updateProgress
+          bytes,
+          sampler,
+          encoder,
+          updateProgress
         ).collect { byteArray ->
           outputStream.write(byteArray)
         }
         encoder.finish()
       }
       ExportType.WAV -> convertMidiToWave(
-          bytes,
-          sampler,
-          updateProgress
+        bytes,
+        sampler,
+        updateProgress
       ).collect { byteArray ->
         outputStream.write(byteArray)
       }
@@ -56,6 +68,7 @@ class MidiToMp3Converter(soundFontPath: String) {
       }
     }
   }
+
 
   fun cancel() {
     // encoder.finish()

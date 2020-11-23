@@ -1,6 +1,7 @@
 package com.philblandford.mp3converter.repository
 
 import android.content.ContentResolver
+import com.philblandford.mp3converter.ui.report.reportError
 import com.philblandford.mp3convertercore.Converter
 import com.philblandford.mp3convertercore.MediaFileDescr
 import com.philblandford.mp3convertercore.api.ExportType
@@ -26,7 +27,10 @@ class FileConverter(private val contentResolver: ContentResolver,
     withContext(Dispatchers.IO) {
       contentResolver.openFileDescriptor(midiFile.uri, "r")?.use { pfd ->
         val fis = FileInputStream(pfd.fileDescriptor)
-        converter.convert(fis, outputStream, exportType, updateProgress)
+        converter.convert(fis, outputStream, exportType, updateProgress) { bytes, e ->
+          reportError(bytes, midiFile.name)
+          throw(e)
+        }
       }
     }
   }
