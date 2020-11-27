@@ -7,9 +7,9 @@ typealias Ms = Long
 typealias Delta = Int
 
 interface ISampler {
-  fun open()
+  fun open(sampleRate: Int)
   fun close()
   fun passEvent(midiEvent: MidiEvent)
-  fun getSample(length: Ms):List<Short>
+  fun getSample(length: Ms, sampleRate:Int):List<Short>
 }
 

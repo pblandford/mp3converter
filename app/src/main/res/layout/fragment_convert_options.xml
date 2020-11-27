@@ -3,51 +3,105 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="20dp"
     tools:context=".ui.conversion.ConvertOptionsFragment">
+
 
     <TextView
         android:id="@+id/format_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:padding="20dp"
         android:text="@string/select_format"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/format_button_group"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button_go"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/format_text">
 
-        <RadioButton
-            android:id="@+id/button_mp3"
-            android:textAppearance="@style/MainText"
-            android:layout_width="match_parent"
+        <RadioGroup
+            android:id="@+id/format_button_group"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/mp3" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/button_wav"
+            <RadioButton
+                android:id="@+id/button_mp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/mp3"
+                android:textAppearance="@style/MainText" />
+
+            <RadioButton
+                android:id="@+id/button_wav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wav" />
+
+        </RadioGroup>
+
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/wav" />
+            android:layout_height="20dp" />
 
-    </RadioGroup>
+        <TextView
+            android:id="@+id/bit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/bitrate_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/sample_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cd_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/cd" />
+
+        </LinearLayout>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sample_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
         android:text="@string/go"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/format_button_group" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

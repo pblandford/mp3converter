@@ -3,6 +3,7 @@ package com.philblandford.mp3convertercore
 import android.net.Uri
 import android.os.Parcelable
 import com.philblandford.mp3convertercore.api.ExportType
+import com.philblandford.mp3convertercore.engine.Settings
 import kotlinx.android.parcel.Parcelize
 import java.io.OutputStream
 
@@ -32,7 +33,10 @@ interface FileGetter {
 
 interface Converter {
   suspend fun convertFile(
-    midiFile: MediaFileDescr, exportType: ExportType, outputStream: OutputStream,
+    midiFile: MediaFileDescr,
+    exportType: ExportType,
+    outputStream: OutputStream,
+    settings: Settings,
     updateProgress: (Int) -> Unit
   )
   fun cancel()

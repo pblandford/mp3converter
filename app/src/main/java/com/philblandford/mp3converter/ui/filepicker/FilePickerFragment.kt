@@ -3,6 +3,7 @@ package com.philblandford.mp3converter.ui.filepicker
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.nbsp.materialfilepicker.MaterialFilePicker
+import com.nbsp.materialfilepicker.ui.FilePickerActivity
 import com.philblandford.mp3convertercore.MediaFileDescr
 import com.philblandford.mp3converter.R
 import com.philblandford.mp3converter.databinding.FilePickerBinding
@@ -26,6 +29,8 @@ import com.philblandford.mp3converter.databinding.FilePickerItemBinding
 import com.philblandford.mp3converter.ui.conversion.ConversionViewModel
 import com.philblandford.mp3converter.ui.conversion.ConvertStatus
 import com.philblandford.mp3converter.ui.conversion.Status
+import org.apache.commons.io.FilenameUtils
+import java.io.File
 import java.util.regex.Pattern
 
 private const val FILE_PICKER_REQUEST_CODE = 0
@@ -74,9 +79,22 @@ class FilePickerFragment() : Fragment() {
     startActivityForResult(intent, 0)
   }
 
+  private fun openDocTreeMaterial() {
+    MaterialFilePicker()
+      .withSupportFragment(this)
+      .withCloseMenu(true)
+      .withPath("/")
+      .withFilter(Pattern.compile(".*\\.(mid|midi|MIDI|MID)$"))
+      .withFilterDirectories(false)
+      .withTitle("Choose a MIDI file..")
+      .withRequestCode(FILE_PICKER_REQUEST_CODE)
+      .start()
+  }
+
+
   private fun initPickButton() {
     binding.buttonSelect.setOnClickListener {
-      openDocTree()
+      openDocTreeMaterial()
     }
   }
 
@@ -87,17 +105,17 @@ class FilePickerFragment() : Fragment() {
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(
-      requestCode,
-      resultCode,
-      data
-    ); if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
-
+    super.onActivityResult(requestCode, resultCode, data)
+    if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
       Log.i("TAG", "${data?.data}")
-      data?.data?.let { uri ->
-        viewModel.getMidiDescr(uri)?.let {
-          navigateToConvertOptions(it)
-        }
+//      data?.data?.let { uri ->
+//        viewModel.getMidiDescr(uri)?.let {
+//          navigateToConvertOptions(it)
+//        }
+//      }
+      data?.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)?.let { fp ->
+        val uri = Uri.fromFile(File(fp))
+        navigateToConvertOptions(MediaFileDescr(0L, FilenameUtils.getBaseName(fp), uri))
       }
     }
   }

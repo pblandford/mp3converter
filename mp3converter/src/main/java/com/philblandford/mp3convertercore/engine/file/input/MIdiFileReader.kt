@@ -6,8 +6,8 @@ data class Failure(val byte: Int, val message: String)
 
 sealed class Either<out L, out R>
 
-internal data class Left<out L>(val l: L) : Either<L, Nothing>()
-internal data class Right<out R>(val r: R) : Either<Nothing, R>()
+data class Left<out L>(val l: L) : Either<L, Nothing>()
+data class Right<out R>(val r: R) : Either<Nothing, R>()
 
 private inline fun <L, R1, R2> Either<L, R1>.flatMap(f: (R1) -> Either<L, R2>): Either<L, R2> =
   when (this) {

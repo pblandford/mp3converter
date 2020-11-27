@@ -11,7 +11,7 @@ class SineSampler :
   private val step = (2 * PI) / (sampleRate / frequency)
   private val amplitude = Short.MAX_VALUE
 
-  override fun open() {
+  override fun open(sampleRate: Int) {
     TODO("Not yet implemented")
   }
 
@@ -22,7 +22,7 @@ class SineSampler :
   override fun passEvent(midiEvent: MidiEvent) {
   }
 
-  override fun getSample( length: Ms): List<Short> {
+  override fun getSample( length: Ms, sampleRate:Int): List<Short> {
     return (1..(length * frequency) / 1000).flatMap { step ->
       createSine()
     }

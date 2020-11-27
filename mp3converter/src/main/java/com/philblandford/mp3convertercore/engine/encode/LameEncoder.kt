@@ -2,7 +2,7 @@ package com.philblandford.mp3convertercore.engine.encode
 
 interface IEncoder {
   fun encodeSample(sample:List<Short>):List<Byte>
-  fun start()
+  fun start(sampleRate:Int, bitRate: Int)
   fun finish()
 }
 
@@ -20,8 +20,8 @@ class LameEncoder :
     )?.toList() ?: listOf()
   }
 
-  override fun start() {
-      init()
+  override fun start(sampleRate: Int, bitRate: Int) {
+      init(sampleRate, bitRate)
   }
 
   override fun finish() {
@@ -30,5 +30,5 @@ class LameEncoder :
 }
 
 external fun encodeBytes(samples:ShortArray, num:Int):ByteArray?
-external fun init();
+external fun init(sampleRate: Int, bitRate:Int);
 external fun close();

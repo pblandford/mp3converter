@@ -19,14 +19,16 @@ int64_t SAMPLE_RATE = (int64_t) 44100;
 JNIEXPORT void JNICALL
 Java_com_philblandford_mp3convertercore_engine_sample_FluidSamplerKt_openFluid(JNIEnv
                                                                            *env,
-                                                                           jobject thiz, jstring
-                                                                           soundfontPath) {
+                                                                           jobject thiz,
+                                                                           jint sample_rate,
+                                                                           jstring soundfontPath) {
     const char *nativeString = (*env)->GetStringUTFChars(env, soundfontPath, NULL);
 
     __android_log_print(ANDROID_LOG_DEBUG,
                         "FLD", "Initialising fluidsynth %s", nativeString);
 
     settings = new_fluid_settings();
+    fluid_settings_setnum(settings, "synth.sample-rate", (double)sample_rate);
     synth = new_fluid_synth(settings);
     fluid_synth_sfload(synth, nativeString,
                        1);

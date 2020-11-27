@@ -15,8 +15,12 @@ lame_global_flags *gfp;
 JNIEXPORT void JNICALL
 Java_com_philblandford_mp3convertercore_engine_encode_LameEncoderKt_init(JNIEnv
                                                                      *env,
-                                                                     jobject thiz) {
+                                                                     jobject thiz,
+                                                                     jint sampleRate,
+                                                                     jint bitrate) {
     gfp = lame_init();
+    lame_set_brate(gfp, bitrate);
+    lame_set_in_samplerate(gfp, sampleRate);
     lame_init_params(gfp);
 }
 

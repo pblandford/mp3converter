@@ -2,14 +2,14 @@ package com.philblandford.mp3convertercore.engine.file.output
 
 import com.philblandford.mp3convertercore.engine.BITS
 import com.philblandford.mp3convertercore.engine.CHANNELS
-import com.philblandford.mp3convertercore.engine.SAMPLE_RATE
+import com.philblandford.mp3convertercore.engine.Settings
 import com.philblandford.mp3convertercore.engine.file.input.Sample
 
 interface IWaveFileCreator {
   fun createWaveFile()
 }
 
-fun createWaveFile(samples: List<Sample>): WaveFile {
+fun createWaveFile(samples: List<Sample>, settings: Settings): WaveFile {
   val shorts =
       getPCMShorts(
           samples
@@ -20,10 +20,10 @@ fun createWaveFile(samples: List<Sample>): WaveFile {
       ),
       FmtChunk(
           numChannels = 1,
-          sampleRate = SAMPLE_RATE,
-          byteRate = SAMPLE_RATE * CHANNELS * (BITS / 8),
-          blockAlign = (CHANNELS * (BITS / 8)).toShort(),
-          bitsPerSample = BITS.toShort()
+          sampleRate = settings.sampleRate,
+          byteRate = settings.sampleRate * CHANNELS * (settings.bitDepth / 8),
+          blockAlign = (CHANNELS * (settings.bitDepth / 8)).toShort(),
+          bitsPerSample = settings.bitDepth.toShort()
       ),
       DataChunk(
           subChunk2Size = shorts.size * 2,

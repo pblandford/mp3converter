@@ -1,13 +1,10 @@
 package com.philblandford.mp3convertercore.engine.file.output
 
 import com.philblandford.mp3convertercore.engine.BITS
-import com.philblandford.mp3convertercore.engine.SAMPLE_RATE
+import com.philblandford.mp3convertercore.engine.CUSTOM_SAMPLE_RATE
 import com.philblandford.mp3convertercore.engine.file.input.Sample
-import com.philblandford.mp3convertercore.engine.file.output.getPCMShorts
 import org.junit.Assert.*
 import org.junit.Test
-
-const val MILLISECONDS_WORTH = (SAMPLE_RATE * (BITS / 8))/1000
 
 class WaveFileCreatorTest {
 

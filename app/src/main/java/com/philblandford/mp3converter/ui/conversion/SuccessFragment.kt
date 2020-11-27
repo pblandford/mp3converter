@@ -42,7 +42,7 @@ class SuccessFragment : PlayFragmentBase() {
   }
 
   override fun getExportType(): ExportType {
-    return viewModel.exportType
+    return viewModel.getExportType().value ?: ExportType.MP3
   }
 
   override fun getFileName(): String? {

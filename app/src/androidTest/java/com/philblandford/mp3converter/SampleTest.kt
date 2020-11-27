@@ -6,7 +6,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.platform.app.InstrumentationRegistry
 import com.philblandford.mp3convertercore.engine.BITS
 import com.philblandford.mp3convertercore.engine.CHANNELS
-import com.philblandford.mp3convertercore.engine.SAMPLE_RATE
+import com.philblandford.mp3convertercore.engine.CUSTOM_SAMPLE_RATE
 import com.philblandford.mp3convertercore.engine.file.output.*
 import com.philblandford.mp3convertercore.engine.sample.FluidSampler
 import kotlinx.coroutines.runBlocking
@@ -37,7 +37,7 @@ class SampleTest {
     val sampler =
         FluidSampler(sfFile.absolutePath)
     val bytes = runBlocking {
-      sampler.getSample( 1000)
+      sampler.getSample( 1000, CUSTOM_SAMPLE_RATE)
     }
     val wavFile =
         WaveFile(
@@ -46,8 +46,8 @@ class SampleTest {
             ),
             FmtChunk(
                 numChannels = 1,
-                sampleRate = SAMPLE_RATE,
-                byteRate = SAMPLE_RATE * CHANNELS * (BITS / 8),
+                sampleRate = CUSTOM_SAMPLE_RATE,
+                byteRate = CUSTOM_SAMPLE_RATE * CHANNELS * (BITS / 8),
                 blockAlign = (CHANNELS * (BITS / 8)).toShort(),
                 bitsPerSample = BITS.toShort()
             ),
