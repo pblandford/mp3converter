@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -29,10 +30,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         reviewManager = ReviewManagerFactory.create(this)
-        requestPermissions {
-            initScreen()
-        }
+        initScreen()
+        requestPermissions {}
     }
 
     private fun requestPermissions(done: () -> Unit) {
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray
     ) {
-        initScreen()
+        //initScreen()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {

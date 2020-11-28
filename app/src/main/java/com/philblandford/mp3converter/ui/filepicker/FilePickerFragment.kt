@@ -2,9 +2,11 @@ package com.philblandford.mp3converter.ui.filepicker
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.storage.StorageManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,23 +16,21 @@ import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nbsp.materialfilepicker.MaterialFilePicker
 import com.nbsp.materialfilepicker.ui.FilePickerActivity
-import com.philblandford.mp3convertercore.MediaFileDescr
 import com.philblandford.mp3converter.R
 import com.philblandford.mp3converter.databinding.FilePickerBinding
 import com.philblandford.mp3converter.databinding.FilePickerItemBinding
 import com.philblandford.mp3converter.ui.conversion.ConversionViewModel
-import com.philblandford.mp3converter.ui.conversion.ConvertStatus
 import com.philblandford.mp3converter.ui.conversion.Status
+import com.philblandford.mp3convertercore.MediaFileDescr
 import org.apache.commons.io.FilenameUtils
 import java.io.File
+import java.lang.reflect.Method
 import java.util.regex.Pattern
 
 private const val FILE_PICKER_REQUEST_CODE = 0
@@ -65,21 +65,9 @@ class FilePickerFragment() : Fragment() {
     })
   }
 
-  private fun openDocTree() {
-    val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-      addCategory(Intent.CATEGORY_OPENABLE)
-      type = "*/*"
-      putExtra(
-        Intent.EXTRA_MIME_TYPES, arrayOf(
-          "audio/midi", "audio/x-midi", "application/x-midi",
-          "audio/x-mid"
-        )
-      )
-    }
-    startActivityForResult(intent, 0)
-  }
-
   private fun openDocTreeMaterial() {
+    val extPath = getExternalStoragePath()!!
+
     MaterialFilePicker()
       .withSupportFragment(this)
       .withCloseMenu(true)
@@ -108,11 +96,6 @@ class FilePickerFragment() : Fragment() {
     super.onActivityResult(requestCode, resultCode, data)
     if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
       Log.i("TAG", "${data?.data}")
-//      data?.data?.let { uri ->
-//        viewModel.getMidiDescr(uri)?.let {
-//          navigateToConvertOptions(it)
-//        }
-//      }
       data?.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)?.let { fp ->
         val uri = Uri.fromFile(File(fp))
         navigateToConvertOptions(MediaFileDescr(0L, FilenameUtils.getBaseName(fp), uri))
@@ -202,6 +185,18 @@ class FilePickerFragment() : Fragment() {
           dialog.dismiss()
         }
         .show()
+    }
+  }
+
+  private fun getExternalStoragePath(): String? {
+    val storageManager: StorageManager =
+      context?.getSystemService(Context.STORAGE_SERVICE) as StorageManager
+    var storageVolumeClazz: Class<*>? = null
+
+    storageVolumeClazz = Class.forName("android.os.storage.StorageVolume")
+    val getPath: Method = storageVolumeClazz.getMethod("getPath")
+    return storageManager.storageVolumes.find{it.isRemovable}?.let {
+      return getPath.invoke(it) as String
     }
   }
 }
