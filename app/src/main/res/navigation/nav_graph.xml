@@ -11,14 +11,14 @@
         android:label="FilePickerFragment"
         tools:layout="@layout/activity_file_picker">
         <action
-            android:id="@+id/action_file_picker_fragment_to_convertDialogFragment"
-            app:destination="@id/convertDialogFragment" />
-        <action
             android:id="@+id/action_file_picker_fragment_to_playFragment"
             app:destination="@id/playFragment" />
         <action
             android:id="@+id/action_file_picker_fragment_to_reportProblemFragment"
             app:destination="@id/reportProblemFragment" />
+        <action
+            android:id="@+id/action_file_picker_fragment_to_convertDialogFragment"
+            app:destination="@id/convertDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/convertDialogFragment"
@@ -27,6 +27,8 @@
         tools:layout="@layout/fragment_convert_dialog">
         <argument
             android:name="midiFile"
+            app:nullable="true"
+            android:defaultValue="@null"
             app:argType="com.philblandford.mp3convertercore.MediaFileDescr" />
     </dialog>
     <dialog

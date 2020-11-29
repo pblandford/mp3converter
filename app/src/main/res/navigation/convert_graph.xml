@@ -2,17 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/convert_options_fragment"
-    android:id="@+id/convert_graph">
+    android:id="@+id/convert_graph"
+    app:startDestination="@id/pickCardFragment">
 
+    <fragment
+        android:id="@+id/pickCardFragment"
+        android:name="com.philblandford.mp3converter.ui.filepicker.PickCardFragment"
+        android:label="fragment_pick_card"
+        tools:layout="@layout/fragment_pick_card">
+        <action
+            android:id="@+id/action_pickCardFragment_to_convert_options_fragment"
+            app:destination="@id/convert_options_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/convert_options_fragment"
         android:name="com.philblandford.mp3converter.ui.conversion.ConvertOptionsFragment"
         android:label="fragment_convert_options"
-        tools:layout="@layout/fragment_convert_options" >
-        <argument
-            android:name="midiFile"
-            app:argType="com.philblandford.mp3convertercore.MediaFileDescr" />
+        tools:layout="@layout/fragment_convert_options">
         <action
             android:id="@+id/action_convertOptionsFragment_to_progressFragment"
             app:destination="@id/progressFragment" />
@@ -21,7 +27,7 @@
         android:id="@+id/progressFragment"
         android:name="com.philblandford.mp3converter.ui.conversion.ProgressFragment"
         android:label="fragment_progress"
-        tools:layout="@layout/fragment_progress" >
+        tools:layout="@layout/fragment_progress">
         <action
             android:id="@+id/action_progressFragment_to_blankFragment"
             app:destination="@id/successFragment" />
@@ -46,5 +52,6 @@
         android:name="com.philblandford.mp3converter.FailureFragment"
         android:label="fragment_failure"
         tools:layout="@layout/fragment_failure" />
+
 
 </navigation>

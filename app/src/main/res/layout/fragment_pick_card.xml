@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border"
+    android:padding="10dp"
+    tools:context=".ui.filepicker.PickCardFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/text_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/choose_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/storage_icon"
+        android:layout_width="@dimen/icon_height"
+        android:layout_height="@dimen/icon_height"
+        android:src="@drawable/storage"
+        app:layout_constraintEnd_toStartOf="@+id/sdcard_icon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_storage"
+        app:layout_constraintEnd_toEndOf="@+id/storage_icon"
+        app:layout_constraintStart_toStartOf="@+id/storage_icon"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <ImageView
+        android:id="@+id/sdcard_icon"
+        android:layout_width="@dimen/icon_height"
+        android:layout_height="@dimen/icon_height"
+        android:src="@drawable/sdcard"
+        app:layout_constraintBottom_toBottomOf="@+id/storage_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/storage_icon"
+        app:layout_constraintTop_toTopOf="@+id/storage_icon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="75dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="195dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sdcard"
+        app:layout_constraintEnd_toEndOf="@+id/sdcard_icon"
+        app:layout_constraintStart_toStartOf="@+id/sdcard_icon"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

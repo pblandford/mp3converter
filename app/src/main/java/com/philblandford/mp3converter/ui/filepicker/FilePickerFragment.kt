@@ -33,8 +33,6 @@ import java.io.File
 import java.lang.reflect.Method
 import java.util.regex.Pattern
 
-private const val FILE_PICKER_REQUEST_CODE = 0
-
 class FilePickerFragment() : Fragment() {
 
   private lateinit var binding: FilePickerBinding
@@ -65,41 +63,17 @@ class FilePickerFragment() : Fragment() {
     })
   }
 
-  private fun openDocTreeMaterial() {
-    val extPath = getExternalStoragePath()!!
-
-    MaterialFilePicker()
-      .withSupportFragment(this)
-      .withCloseMenu(true)
-      .withPath("/")
-      .withFilter(Pattern.compile(".*\\.(mid|midi|MIDI|MID)$"))
-      .withFilterDirectories(false)
-      .withTitle("Choose a MIDI file..")
-      .withRequestCode(FILE_PICKER_REQUEST_CODE)
-      .start()
-  }
 
 
   private fun initPickButton() {
     binding.buttonSelect.setOnClickListener {
-      openDocTreeMaterial()
+      navigateToPickCard()
     }
   }
 
   private fun initProblemButton() {
     binding.buttonProblem.setOnClickListener {
       navigateToReportProblem()
-    }
-  }
-
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-    if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
-      Log.i("TAG", "${data?.data}")
-      data?.getStringExtra(FilePickerActivity.RESULT_FILE_PATH)?.let { fp ->
-        val uri = Uri.fromFile(File(fp))
-        navigateToConvertOptions(MediaFileDescr(0L, FilenameUtils.getBaseName(fp), uri))
-      }
     }
   }
 
@@ -135,16 +109,13 @@ class FilePickerFragment() : Fragment() {
     }
   }
 
-  private fun navigateToConvertOptions(midiFileDescr: MediaFileDescr) {
-    val action =
-      FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment(
-        midiFileDescr
-      )
+  private fun navigateToReportProblem() {
+    val action = FilePickerFragmentDirections.actionFilePickerFragmentToReportProblemFragment()
     findNavController().navigate(action)
   }
 
-  private fun navigateToReportProblem() {
-    val action = FilePickerFragmentDirections.actionFilePickerFragmentToReportProblemFragment()
+  private fun navigateToPickCard() {
+    val action = FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment()
     findNavController().navigate(action)
   }
 
@@ -188,15 +159,4 @@ class FilePickerFragment() : Fragment() {
     }
   }
 
-  private fun getExternalStoragePath(): String? {
-    val storageManager: StorageManager =
-      context?.getSystemService(Context.STORAGE_SERVICE) as StorageManager
-    var storageVolumeClazz: Class<*>? = null
-
-    storageVolumeClazz = Class.forName("android.os.storage.StorageVolume")
-    val getPath: Method = storageVolumeClazz.getMethod("getPath")
-    return storageManager.storageVolumes.find{it.isRemovable}?.let {
-      return getPath.invoke(it) as String
-    }
-  }
 }

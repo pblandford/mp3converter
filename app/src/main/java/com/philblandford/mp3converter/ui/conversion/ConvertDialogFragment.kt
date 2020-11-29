@@ -41,11 +41,6 @@ class ConvertDialogFragment : DialogFragment() {
     return inflater.inflate(R.layout.fragment_convert_dialog, container, false)
   }
 
-  override fun onConfigurationChanged(newConfig: Configuration) {
-    super.onConfigurationChanged(newConfig)
-    Log.e("CDF", "OnConfigurationChanged")
-  }
-
   override fun onDismiss(dialog: DialogInterface) {
     Log.e("CDF", "onDismiss")
     viewModel.cancel()
