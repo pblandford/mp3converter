@@ -79,9 +79,11 @@ class PickCardFragment : DialogFragment() {
   }
 
   private fun navigateToConvertOptions() {
-    val action =
-      PickCardFragmentDirections.actionPickCardFragmentToConvertOptionsFragment()
-    findNavController().navigate(action)
+    if (findNavController().currentDestination?.id == R.id.pickCardFragment) {
+      val action =
+        PickCardFragmentDirections.actionPickCardFragmentToConvertOptionsFragment()
+      findNavController().navigate(action)
+    }
   }
 
   private fun openDocTreeMaterial(path: String) {
