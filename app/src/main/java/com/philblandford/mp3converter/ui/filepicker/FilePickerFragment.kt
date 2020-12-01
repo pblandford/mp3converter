@@ -110,13 +110,17 @@ class FilePickerFragment() : Fragment() {
   }
 
   private fun navigateToReportProblem() {
-    val action = FilePickerFragmentDirections.actionFilePickerFragmentToReportProblemFragment()
-    findNavController().navigate(action)
+    if (findNavController().currentDestination?.id == R.id.file_picker_fragment) {
+      val action = FilePickerFragmentDirections.actionFilePickerFragmentToReportProblemFragment()
+      findNavController().navigate(action)
+    }
   }
 
   private fun navigateToPickCard() {
-    val action = FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment()
-    findNavController().navigate(action)
+    if (findNavController().currentDestination?.id == R.id.file_picker_fragment) {
+      val action = FilePickerFragmentDirections.actionFilePickerFragmentToConvertDialogFragment()
+      findNavController().navigate(action)
+    }
   }
 
   private fun navigateToPlay(descr: MediaFileDescr) {
