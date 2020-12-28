@@ -10,23 +10,23 @@ data class Left<out L>(val l: L) : Either<L, Nothing>()
 data class Right<out R>(val r: R) : Either<Nothing, R>()
 
 private inline fun <L, R1, R2> Either<L, R1>.flatMap(f: (R1) -> Either<L, R2>): Either<L, R2> =
-  when (this) {
-    is Left -> this
-    is Right -> f(this.r)
-  }
+    when (this) {
+      is Left -> this
+      is Right -> f(this.r)
+    }
 
 
 fun readMidiFile(bytes: List<Byte>): Either<Failure, MidiFile> {
   val byteReader =
       ByteReader(bytes.toByteArray())
-  return byteReader.readHeader().flatMap  { header ->
+  return byteReader.readHeader().flatMap { header ->
     byteReader.readTracks(header.tracks).flatMap { trackChunk ->
-        Right(
-            MidiFile(
-                header,
-                trackChunk
-            )
-        )
+      Right(
+          MidiFile(
+              header,
+              trackChunk
+          )
+      )
     }
   }
 }
@@ -85,11 +85,11 @@ internal fun ByteReader.readTracks(num: Int): Either<Failure, TrackChunk> {
 
 internal fun ByteReader.readTrack(): Either<Failure, Track> {
   val chunkId = getNextString(4)
-  if (chunkId != "MTrk") {
+  if (chunkId != "MTrk" && chunkId.take(3) != "SEM") {
     return Left(
         Failure(
             getIdx(),
-            "Expected MTrk ID"
+            "Expected MTrk ID, got $chunkId"
         )
     )
   }
@@ -111,16 +111,16 @@ internal fun ByteReader.readTrack(): Either<Failure, Track> {
   }
 
   return if (events.last().second !is EndTrackEvent) {
-      Left(
-          Failure(
-              getIdx(),
-              "No end of track event found"
-          )
-      )
+    Left(
+        Failure(
+            getIdx(),
+            "No end of track event found"
+        )
+    )
   } else {
-      Right(
-          Track(events)
-      )
+    Right(
+        Track(events)
+    )
   }
 }
 
@@ -133,13 +133,13 @@ internal data class DeltaEventReturn(
 internal fun ByteReader.readDeltaEvent(lastTypeChan: UByte? = null): Either<Failure, DeltaEventReturn> {
   return readDeltaTime().flatMap { dt ->
     readEvent(lastTypeChan).flatMap { event ->
-        Right(
-            DeltaEventReturn(
-                event.typeChan,
-                dt,
-                event.midiEvent
-            )
-        )
+      Right(
+          DeltaEventReturn(
+              event.typeChan,
+              dt,
+              event.midiEvent
+          )
+      )
     }
   }
 }
@@ -286,12 +286,12 @@ private fun ByteReader.readSysexEvent(): Either<Failure, SysexEvent> {
   val bytes = getNextString(length).toByteArray().toList()
   val term = getNextByte()
   return if (term != 0xf7.toUByte()) {
-      Left(
-          Failure(
-              getIdxLastByte(),
-              "Malformed SysEx message"
-          )
-      )
+    Left(
+        Failure(
+            getIdxLastByte(),
+            "Malformed SysEx message"
+        )
+    )
   } else {
     return Right(
         SysexEvent(bytes)
@@ -301,6 +301,7 @@ private fun ByteReader.readSysexEvent(): Either<Failure, SysexEvent> {
 
 private fun ByteReader.readMetaEvent(): Either<Failure, MetaEvent> {
   return when (val type = getNextByte().toInt()) {
+    EVENT_META_SEQUENCE -> readSequenceEvent()
     EVENT_META_TEXT -> readTextEvent<TextEvent>()
     EVENT_META_COPYRIGHT -> readTextEvent<CopyrightEvent>()
     EVENT_META_TRACK_NAME -> readTextEvent<TrackNameEvent>()
@@ -327,21 +328,19 @@ private fun ByteReader.readMetaEvent(): Either<Failure, MetaEvent> {
   }
 }
 
+private inline fun ByteReader.readSequenceEvent(): Either<Failure, MetaEvent> {
+  val length = getNextByte().toInt()
+  val num = getNextShort().toInt()
+  return Right(SequenceNumberEvent(num))
+}
+
 private inline fun <reified T : MetaEvent> ByteReader.readTextEvent(): Either<Failure, MetaEvent> {
   val pos = getIdx()
   val length = getNextByte().toInt()
   val text = getNextString(length)
   return T::class.constructors.find { it.parameters.size == 1 }?.let { constructor ->
-      Right(
-          constructor.call(
-              text
-          )
-      )
-  } ?: Left(
-      Failure(
-          pos,
-          "Could not create event ${T::class}"
-      )
+    Right(constructor.call(text))
+  } ?: Left(Failure(pos, "Could not create event ${T::class}")
   )
 }
 
@@ -350,16 +349,8 @@ private inline fun <reified T : MetaEvent> ByteReader.readByteEvent(): Either<Fa
   val length = getNextByte().toInt()
   val byte = getNextByte().toInt()
   return T::class.constructors.find { it.parameters.size == 1 }?.let { constructor ->
-      Right(
-          constructor.call(
-              byte
-          )
-      )
-  } ?: Left(
-      Failure(
-          pos,
-          "Could not create event ${T::class}"
-      )
+    Right(constructor.call(byte))
+  } ?: Left(Failure(pos, "Could not create event ${T::class}")
   )
 }
 
@@ -367,9 +358,9 @@ private fun ByteReader.readTempo(): Either<Failure, TempoEvent> {
   return when (getNextByte().toInt()) {
     3 -> {
       val ms = getNext24Bit()
-        Right(
-            TempoEvent(ms.toLong())
-        )
+      Right(
+          TempoEvent(ms.toLong())
+      )
     }
     else -> Left(
         Failure(
@@ -480,9 +471,9 @@ private fun getFormat(intVal: Int): MidiFormat? {
 
 private fun getTimeType(num: UByte): TimeType {
   return if ((num and 0x80.toUByte()) == 0.toUByte()) {
-      TimeType.METRICAL
+    TimeType.METRICAL
   } else {
-      TimeType.TIMECODE
+    TimeType.TIMECODE
   }
 }
 

@@ -63,8 +63,6 @@ class FilePickerFragment() : Fragment() {
     })
   }
 
-
-
   private fun initPickButton() {
     binding.buttonSelect.setOnClickListener {
       navigateToPickCard()

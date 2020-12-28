@@ -11,6 +11,7 @@ const val EVENT_CHANNEL_PRESSURE = 0xd0
 const val EVENT_PITCH_BEND = 0xe0
 
 const val EVENT_META = 0xff
+const val EVENT_META_SEQUENCE = 0x00
 const val EVENT_META_TEXT = 0x01
 const val EVENT_META_COPYRIGHT = 0x02
 const val EVENT_META_TRACK_NAME = 0x03
@@ -51,6 +52,7 @@ sealed class MidiEvent(
   open val priority: Int
 ) : MidiComponent()
 
+data class SequenceNumberEvent(val number:Int) : MetaEvent(5)
 data class TextEvent(val text: String) : MetaEvent(5)
 data class CopyrightEvent(val text:String) : MetaEvent(5)
 data class TrackNameEvent(val text:String) : MetaEvent(5)

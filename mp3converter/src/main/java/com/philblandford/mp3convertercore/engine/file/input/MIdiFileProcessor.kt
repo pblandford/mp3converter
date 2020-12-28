@@ -130,7 +130,7 @@ internal fun processEventList(
 
   val tracks = when (format) {
     MidiFormat.SINGLE -> trackChunk.tracks
-    else -> trackChunk.tracks.drop(1)
+    else -> trackChunk.tracks.filter{ t ->  t.events.any { it.second is NoteOnEvent } }
   }
   val tempoEvents = trackChunk.tracks.first().events
 
